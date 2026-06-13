@@ -1,0 +1,21 @@
+## Curious Engine website — 2026-06-13T00:34:22Z
+**Summary:** Next.js 16 / React 19 / Tailwind 4 / shadcn Maia preset (Figtree font, neutral colors, 0.5rem medium radius) / @phosphor-icons/react. Full landing page for a holding company styled after getfolk.app.
+Components: navbar (Products dropdown, Solutions, Careers, About, CTA), hero (stat strip), portfolio (6 company cards), philosophy (3 pillars), quotes (4 founder quotes), team (4 members), careers (role list), FAQ (accordion), CTA (dark panel), footer. All server components except navbar.tsx and faq.tsx ("use client"). SSR icons via @phosphor-icons/react/dist/ssr.
+**Files:** src/app/page.tsx, src/app/layout.tsx, src/app/globals.css, src/components/navbar.tsx, src/components/hero.tsx, src/components/portfolio.tsx, src/components/philosophy.tsx, src/components/quotes.tsx, src/components/team.tsx, src/components/careers.tsx, src/components/faq.tsx, src/components/cta.tsx, src/components/footer.tsx
+**Tags:** nextjs, shadcn, phosphor-icons, tailwind4, maia, holding-company, landing-page
+
+## Curious Engine website — 2026-06-13T00:44:13Z
+**Summary:** Next.js 16 / React 19 / Tailwind 4 / shadcn Maia preset (Figtree font, neutral colors, 0.5rem medium radius) / @phosphor-icons/react. Full landing page for a holding company styled after getfolk.app.
+Components: navbar.tsx (Products dropdown, Solutions dropdown, Manifesto, Careers→/careers, About→/about, CTA→/portfolio), hero.tsx (no badge pill, stat strip), quotes.tsx, team.tsx, faq.tsx (accordion, "use client"), cta.tsx, footer.tsx. All server components except navbar.tsx and faq.tsx. SSR icons via @phosphor-icons/react/dist/ssr (client components use @phosphor-icons/react). Pages: / (hero+quotes+team+faq+cta), /portfolio (portfolio component + page header), /careers (careers component + page header), /manifesto (6-section long-form), /about (origin story + values + team component).
+**Files:** src/app/page.tsx, src/app/layout.tsx, src/app/globals.css, src/app/portfolio/page.tsx, src/app/careers/page.tsx, src/app/manifesto/page.tsx, src/app/about/page.tsx, src/components/navbar.tsx, src/components/hero.tsx, src/components/portfolio.tsx, src/components/philosophy.tsx, src/components/quotes.tsx, src/components/team.tsx, src/components/careers.tsx, src/components/faq.tsx, src/components/cta.tsx, src/components/footer.tsx
+**Tags:** nextjs, shadcn, phosphor-icons, tailwind4, maia, holding-company, landing-page
+
+## Curious Engine website — 2026-06-13T01:01:39Z
+**Summary:** Next.js 16 / React 19 / Tailwind 4 / shadcn Maia preset (Figtree font, neutral colors, 0.5rem medium radius) / @phosphor-icons/react. Full landing page for a holding company styled after getfolk.app.
+Components: navbar.tsx (Products dropdown, Solutions dropdown, Manifesto, Careers→/careers, About→/about, CTA→/portfolio), hero.tsx (no badge pill, stat strip). quotes.tsx uses REAL founder quotes from alvinliju.me and paulyn.lol. team.tsx: Paulyn (JakeOJeff, github/JakeOJeff) and Alvin Liju (github/alvinliju). faq.tsx (accordion, "use client"). cta.tsx, footer.tsx. All server components except navbar.tsx and faq.tsx. SSR icons via @phosphor-icons/react/dist/ssr (client components use @phosphor-icons/react). Pages: / (hero+quotes+faq+cta), /portfolio (mimicode card), /careers, /manifesto, /about. Location: Bangalore. Tone: casual, builder-to-builder, no corporate jargon. CTA headline: 'if you\'re building something cool, hit us up!'
+**Files:** src/app/page.tsx, src/app/layout.tsx, src/app/globals.css, src/app/portfolio/page.tsx, src/app/careers/page.tsx, src/app/manifesto/page.tsx, src/app/about/page.tsx, src/components/navbar.tsx, src/components/hero.tsx, src/components/portfolio.tsx, src/components/quotes.tsx, src/components/team.tsx, src/components/careers.tsx, src/components/faq.tsx, src/components/cta.tsx, src/components/footer.tsx
+**Tags:** nextjs, shadcn, phosphor-icons, tailwind4, maia, holding-company, landing-page, bangalore
+
+## session-reflect: 53566ceb24a0 — 2026-06-13T01:59:50Z
+Fixed framer-motion v12 import compatibility by renaming `DynamicAnimationOptions` to `AnimationOptions`. Build succeeded. Main inefficiency: after `grep -r` was blocked and error suggested using `rg`, model retried the unavailable `rg` command 4 times before reverting to plain `grep`, which worked immediately.
+
