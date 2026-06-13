@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Figtree } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
+import { instrumentSans } from "@/lib/fonts";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("h-full antialiased", figtree.variable, geistMono.variable)}>
+    <html lang="en" suppressHydrationWarning className={cn("h-full antialiased", instrumentSans.variable, geistMono.variable)}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ThemeProvider>{children}</ThemeProvider>
       </body>

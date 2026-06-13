@@ -16,13 +16,13 @@ export function Hero() {
       />
 
       <div className="relative mx-auto max-w-4xl flex flex-col items-center text-center gap-6">
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.08] text-white">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.08] text-foreground">
           curious about <WordCycler />.
           <br />
-          <span className="text-white/60 font-normal">building <Pen>what&rsquo;s next.</Pen></span>
+          <span className="text-muted-foreground font-normal">building <Pen>what&rsquo;s next.</Pen></span>
         </h1>
 
-        <p className="max-w-xl text-base sm:text-lg text-white/70 leading-relaxed">
+        <p className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
           we&apos;re a small team out of bangalore building tools we wish existed.
           right now that&apos;s mimicode — an AI coding tool that lives in your editor,
           not in a chat tab. more things on the way.
@@ -34,7 +34,7 @@ export function Hero() {
               see what we&apos;re building <ArrowRight size={16} weight="bold" />
             </Link>
           </Button>
-          <Button variant="ghost" size="lg" className="rounded-md text-white/70 gap-2 px-6" asChild>
+          <Button variant="ghost" size="lg" className="rounded-md gap-2 px-6" asChild>
             <Link href="/manifesto">our story →</Link>
           </Button>
         </div>

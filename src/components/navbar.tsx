@@ -71,7 +71,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-border bg-background">
+    <header className="fixed top-0 inset-x-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-md">
       <div className="mx-auto max-w-6xl px-6 h-14 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
@@ -193,7 +193,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-background px-6 py-4 flex flex-col gap-3">
+        <div className="md:hidden border-t border-border/60 bg-background/80 backdrop-blur-md px-6 py-4 flex flex-col gap-3">
           <Link href="/portfolio" className="text-sm text-muted-foreground hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>products</Link>
           <Link href="/solutions/founders" className="text-sm text-muted-foreground hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>solutions</Link>
           <Link href="/manifesto" className="text-sm text-muted-foreground hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>manifesto</Link>
