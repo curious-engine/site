@@ -1,9 +1,9 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { Philosophy } from "@/components/philosophy";
-import { Quotes } from "@/components/quotes";
 import { FAQ } from "@/components/faq";
 import { CTA } from "@/components/cta";
+import { AbstractLines } from "@/components/abstract-lines";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
@@ -13,9 +13,9 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Philosophy />
-        <Quotes />
         <FAQ />
         <CTA />
+        <AbstractLines />
       </main>
       <Footer />
     </>

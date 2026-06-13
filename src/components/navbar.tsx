@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -22,10 +23,12 @@ import {
   Terminal,
   Info,
   Briefcase,
+  EnvelopeSimple,
   List,
   X,
 } from "@phosphor-icons/react";
 
+/* ─── data ──────────────────────────────────────────────────────────────── */
 const products = [
   {
     icon: Terminal,
@@ -35,83 +38,97 @@ const products = [
   },
 ];
 
-const resources = [
-  {
-    icon: Info,
-    name: "About",
-    desc: "Who we are, where we're based, and why we started Curious Engine.",
-    href: "/about",
-  },
-  {
-    icon: Briefcase,
-    name: "Careers",
-    desc: "Open roles across the Curious Engine family of companies.",
-    href: "/careers",
-  },
-];
-
 const solutions = [
-  {
-    icon: HandWaving,
-    name: "For Founders",
-    desc: "Capital, infrastructure, and a permanent home for your company.",
-    href: "/solutions/founders",
-  },
-  {
-    icon: Wrench,
-    name: "For Operators",
-    desc: "Join the group and run a business inside the Curious Engine ecosystem.",
-    href: "/solutions/operators",
-  },
-  {
-    icon: Buildings,
-    name: "For Enterprises",
-    desc: "Custom deployments and partnerships across our portfolio.",
-    href: "/solutions/enterprises",
-  },
-  {
-    icon: BookOpen,
-    name: "Case Studies",
-    desc: "How our portfolio companies have grown with shared infrastructure.",
-    href: "/solutions/case-studies",
-  },
-  {
-    icon: Handshake,
-    name: "Partners",
-    desc: "Strategic partners, service providers, and co-builders.",
-    href: "/solutions/partners",
-  },
+  { icon: HandWaving, name: "For Founders",   desc: "Capital, infrastructure, and a permanent home for your company.",           href: "/solutions/founders"     },
+  { icon: Wrench,     name: "For Operators",  desc: "Join the group and run a business inside the Curious Engine ecosystem.",    href: "/solutions/operators"    },
+  { icon: Buildings,  name: "For Enterprises",desc: "Custom deployments and partnerships across our portfolio.",                 href: "/solutions/enterprises"  },
+  { icon: BookOpen,   name: "Case Studies",   desc: "How our portfolio companies have grown with shared infrastructure.",        href: "/solutions/case-studies" },
+  { icon: Handshake,  name: "Partners",       desc: "Strategic partners, service providers, and co-builders.",                   href: "/solutions/partners"     },
 ];
 
+const resources = [
+  { icon: Info,           name: "About",   desc: "Who we are, where we're based, and why we started Curious Engine.", href: "/about"                        },
+  { icon: Briefcase,      name: "Careers", desc: "Open roles across the Curious Engine family of companies.",         href: "/careers"                      },
+  { icon: EnvelopeSimple, name: "Contact", desc: "Say hi, pitch us something, or just see what happens.",             href: "mailto:hello@curiousengine.com" },
+];
+
+/* ─── spring used for pill morph ────────────────────────────────────────── */
+const MORPH     = { type: "spring", stiffness: 280, damping: 34 } as const; // snap to pill
+const MORPH_OUT = { type: "spring", stiffness: 120, damping: 18 } as const; // slow-bounce back to bar
+const EASE  = [0.22, 1, 0.36, 1] as const;
+
+/* ─── Navbar ─────────────────────────────────────────────────────────────── */
 export function Navbar() {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [scrolled, setScrolled] = React.useState(false);
+  const [scrolled,    setScrolled]    = React.useState(false);
+  const [mobileOpen,  setMobileOpen]  = React.useState(false);
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 0);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header className={cn("fixed top-0 inset-x-0 z-50 border-b transition-colors duration-300", scrolled ? "border-border/40 bg-background/35 backdrop-blur-md" : "border-transparent bg-transparent")}>
-      <div className="mx-auto max-w-6xl px-6 h-14 flex items-center justify-between gap-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 shrink-0">
-          <span className="size-6 rounded-md bg-foreground" />
-          <span className="font-semibold tracking-tight text-sm">curious engine</span>
-        </Link>
+    /*
+     * Outer shell — fixed, full-viewport-width, flex-centered.
+     * pointer-events-none so the transparent area at the top
+     * doesn't block page interaction.
+     */
+    <div className="fixed top-0 inset-x-0 z-50 flex justify-center pointer-events-none">
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          <NavigationMenu>
-            <NavigationMenuList>
-              {/* Products dropdown */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm font-medium text-foreground/70 bg-transparent hover:text-foreground data-[state=open]:text-foreground">
-                  products
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
+      {/* Width wrapper: animates from full → 768 px on scroll */}
+      <motion.div
+        className="w-full pointer-events-auto"
+        animate={{
+          maxWidth: scrolled ? 784 : 100000,
+          paddingLeft:  scrolled ? 16 : 0,
+          paddingRight: scrolled ? 16 : 0,
+          paddingTop:   scrolled ? 14 : 0,
+        }}
+        transition={scrolled ? MORPH : MORPH_OUT}
+      >
+        {/* ── Pill / bar ───────────────────────────────────────────────── */}
+        <motion.header
+          /* colours transition via CSS; geometry via framer */
+          className={cn(
+            "w-full flex items-center justify-between border",
+            "transition-colors duration-500",
+            scrolled
+              ? "bg-background/82 border-border/25 shadow-[0_2px_24px_0_rgb(0_0_0_/_.06)] backdrop-blur-xl"
+              : "bg-transparent border-transparent shadow-none"
+          )}
+          animate={{
+            borderRadius: scrolled ? 9999 : 0,
+            height:       scrolled ? 48   : 64,
+            paddingLeft:  scrolled ? 20   : 24,
+            paddingRight: scrolled ? 8    : 24,
+          }}
+          initial={{
+            borderRadius: 0,
+            height:       64,
+            paddingLeft:  24,
+            paddingRight: 24,
+          }}
+          transition={scrolled ? MORPH : MORPH_OUT}
+        >
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <motion.span
+              className="rounded-md bg-foreground"
+              animate={{ width: scrolled ? 18 : 22, height: scrolled ? 18 : 22 }}
+              transition={scrolled ? MORPH : MORPH_OUT}
+              style={{ display: "inline-block" }}
+            />
+            <span className="font-semibold tracking-tight text-sm">curious engine</span>
+          </Link>
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center min-w-0">
+            <NavigationMenu>
+              <NavigationMenuList className="gap-0">
+
+                <NavItem label="products">
                   <ul className="flex flex-col w-[340px] gap-2 p-4">
                     {products.map((p) => (
                       <ListItem key={p.name} href={p.href} title={p.name} icon={p.icon}>
@@ -120,24 +137,15 @@ export function Navbar() {
                     ))}
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link
-                          href="/portfolio"
-                          className="flex items-center gap-2 rounded-md px-3 py-2 text-xs text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                        >
+                        <Link href="/portfolio" className="flex items-center gap-2 rounded-md px-3 py-2 text-xs text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">
                           view all companies →
                         </Link>
                       </NavigationMenuLink>
                     </li>
                   </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+                </NavItem>
 
-              {/* Solutions dropdown */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm font-medium text-foreground/70 bg-transparent hover:text-foreground data-[state=open]:text-foreground">
-                  solutions
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavItem label="solutions">
                   <ul className="grid w-[520px] grid-cols-2 gap-2 p-4">
                     {solutions.map((s) => (
                       <ListItem key={s.name} href={s.href} title={s.name} icon={s.icon}>
@@ -145,15 +153,9 @@ export function Navbar() {
                       </ListItem>
                     ))}
                   </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+                </NavItem>
 
-              {/* Resources dropdown */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm font-medium text-foreground/70 bg-transparent hover:text-foreground data-[state=open]:text-foreground">
-                  resources
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavItem label="resources">
                   <ul className="flex flex-col w-[340px] gap-2 p-4">
                     {resources.map((r) => (
                       <ListItem key={r.name} href={r.href} title={r.name} icon={r.icon}>
@@ -161,87 +163,137 @@ export function Navbar() {
                       </ListItem>
                     ))}
                   </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+                </NavItem>
 
-              {/* Community */}
-              <NavigationMenuItem>
-                <Link href="/community" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "text-sm font-medium text-foreground/70 bg-transparent hover:text-foreground hover:bg-transparent"
-                    )}
-                  >
-                    community
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+                <PlainLink href="/community">community</PlainLink>
+                <PlainLink href="/manifesto">manifesto</PlainLink>
 
-              {/* Manifesto */}
-              <NavigationMenuItem>
-                <Link href="/manifesto" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "text-sm font-medium text-foreground/70 bg-transparent hover:text-foreground hover:bg-transparent"
-                    )}
-                  >
-                    manifesto
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </nav>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </nav>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="text-sm font-normal text-muted-foreground" asChild>
-            <Link href="/#contact">contact us</Link>
-          </Button>
-          <Button size="sm" className="text-sm rounded-md" asChild>
-            <Link href="/portfolio">explore portfolio →</Link>
-          </Button>
-        </div>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden p-1 rounded-md hover:bg-muted transition-colors"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={20} /> : <List size={20} />}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden border-t border-border/40 bg-background/45 backdrop-blur-md px-6 py-4 flex flex-col gap-3">
-          <Link href="/portfolio" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>products</Link>
-          <Link href="/solutions/founders" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>solutions</Link>
-          <Link href="/about" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>about</Link>
-          <Link href="/careers" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>careers</Link>
-          <Link href="/community" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>community</Link>
-          <Link href="/manifesto" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>manifesto</Link>
-          <div className="pt-2 border-t border-border flex flex-col gap-2">
-            <Button variant="outline" size="sm" className="w-full justify-center" asChild>
-              <Link href="/#contact">contact us</Link>
-            </Button>
-            <Button size="sm" className="w-full justify-center" asChild>
-              <Link href="/portfolio">explore portfolio →</Link>
-            </Button>
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center gap-1 shrink-0">
+            <motion.div
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            >
+              <Button size="sm" className="text-sm rounded-full px-4" asChild>
+                <Link href="/portfolio">portfolio →</Link>
+              </Button>
+            </motion.div>
           </div>
-        </div>
-      )}
-    </header>
+
+          {/* Mobile toggle */}
+          <button
+            className="md:hidden p-2 rounded-full hover:bg-muted transition-colors mr-1"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={mobileOpen ? "x" : "list"}
+                initial={{ opacity: 0, rotate: -45, scale: 0.6 }}
+                animate={{ opacity: 1, rotate: 0,   scale: 1   }}
+                exit={{    opacity: 0, rotate:  45, scale: 0.6 }}
+                transition={{ duration: 0.16 }}
+                className="flex"
+              >
+                {mobileOpen ? <X size={18} /> : <List size={18} />}
+              </motion.span>
+            </AnimatePresence>
+          </button>
+        </motion.header>
+
+        {/* ── Mobile menu ──────────────────────────────────────────────── */}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              className="md:hidden mt-2 rounded-2xl border border-border/30 bg-background/92 backdrop-blur-xl shadow-lg px-5 py-4 flex flex-col gap-3"
+              initial={{ opacity: 0, y: -12, scale: 0.96, filter: "blur(4px)" }}
+              animate={{ opacity: 1, y:   0, scale: 1,    filter: "blur(0px)" }}
+              exit={{    opacity: 0, y: -12, scale: 0.96, filter: "blur(4px)" }}
+              transition={{ duration: 0.26, ease: EASE }}
+            >
+              {[
+                { href: "/portfolio",          label: "products"   },
+                { href: "/solutions/founders", label: "solutions"  },
+                { href: "/about",              label: "about"      },
+                { href: "/careers",            label: "careers"    },
+                { href: "/community",          label: "community"  },
+                { href: "/manifesto",          label: "manifesto"  },
+              ].map(({ href, label }, i) => (
+                <motion.div
+                  key={href}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0   }}
+                  transition={{ delay: i * 0.04, duration: 0.28, ease: EASE }}
+                >
+                  <Link
+                    href={href}
+                    className="block text-sm font-medium text-foreground/70 hover:text-foreground py-1 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {label}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div
+                className="pt-2 border-t border-border flex flex-col gap-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.24, duration: 0.3 }}
+              >
+                <Button size="sm" className="w-full justify-center rounded-full" asChild>
+                  <Link href="/portfolio">explore portfolio →</Link>
+                </Button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+      </motion.div>
+    </div>
   );
 }
 
-/* ---- helpers ---- */
+/* ─── helpers ────────────────────────────────────────────────────────────── */
+
+function NavItem({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <NavigationMenuItem>
+      <NavigationMenuTrigger className="text-sm font-medium text-foreground/60 bg-transparent hover:text-foreground hover:bg-muted/60 data-[state=open]:text-foreground data-[state=open]:bg-muted/60 rounded-full h-8 px-3 transition-colors">
+        {label}
+      </NavigationMenuTrigger>
+      <NavigationMenuContent>{children}</NavigationMenuContent>
+    </NavigationMenuItem>
+  );
+}
+
+function PlainLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <NavigationMenuItem>
+      <Link href={href} legacyBehavior passHref>
+        <NavigationMenuLink
+          className={cn(
+            navigationMenuTriggerStyle(),
+            "text-sm font-medium text-foreground/60 bg-transparent hover:text-foreground hover:bg-muted/60 rounded-full h-8 px-3 transition-colors"
+          )}
+        >
+          {children}
+        </NavigationMenuLink>
+      </Link>
+    </NavigationMenuItem>
+  );
+}
+
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { icon: React.ComponentType<{ size?: number; className?: string }>; title: string }
+  React.ComponentPropsWithoutRef<"a"> & {
+    icon: React.ComponentType<{ size?: number; className?: string }>;
+    title: string;
+  }
 >(({ className, title, children, icon: Icon, ...props }, ref) => (
   <li>
     <NavigationMenuLink asChild>

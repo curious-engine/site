@@ -16,7 +16,7 @@ export function Pen({
     <span
       className={cn(
         instrumentSerif.className,
-        "font-normal tracking-normal",
+        "font-normal italic tracking-normal",
         className
       )}
     >

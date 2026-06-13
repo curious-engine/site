@@ -24,8 +24,8 @@ const links = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border px-6 pt-16 pb-8">
-      <div className="mx-auto max-w-6xl">
+    <footer className="border-t border-border pt-16">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
@@ -64,10 +64,19 @@ export function Footer() {
 
         <Separator className="mb-6" />
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground pb-6">
           <span>© {new Date().getFullYear()} Curious Engine. all rights reserved.</span>
           <span>made with curiosity, from bangalore.</span>
         </div>
+      </div>
+
+      {/* Big faded wordmark — bottom of footer, bleeds out */}
+      <div className="relative overflow-hidden select-none pointer-events-none" aria-hidden>
+        <p className="text-[clamp(3rem,13vw,11rem)] font-bold tracking-tighter leading-none text-center text-foreground/[0.055] whitespace-nowrap pb-0">
+          CURIOUS ENGINE
+        </p>
+        {/* fade bottom half to transparent */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
       </div>
     </footer>
   );
