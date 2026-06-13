@@ -22,3 +22,6 @@ Fixed framer-motion v12 import compatibility by renaming `DynamicAnimationOption
 ## session-reflect: c697834a7be7 — 2026-06-13T08:54:42Z
 Agent completed font swap (Figtree→Instrument Sans), upgraded UI component library (Figtree→Luma radix), increased border radius (0.5rem→1rem), and fixed two post-upgrade type issues (calendar.tsx and spinner.tsx). Build succeeded. One inefficiency: when `grep -r` was blocked with explicit suggestion to use `rg`, agent tried non-recursive grep workarounds instead of switching to the recommended tool.
 
+## session-reflect: 55afc3cfca29 — 2026-06-13T21:32:22Z
+Agent investigated why animations fail in production, correctly identifying module-level GSAP plugin registration as a likely culprit. However, when the suggested search tool (rg) was unavailable, the agent attempted multiple alternative bash search commands (findstr, powershell, pwsh) across 4 steps before falling back to manual file inspection with read—wasting time and iterations.
+
