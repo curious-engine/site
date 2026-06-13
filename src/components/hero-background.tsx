@@ -1,32 +1,27 @@
-"use client";
-
-import { motion, useScroll, useTransform } from "framer-motion";
-
 export function HeroBackground() {
-  const { scrollY } = useScroll();
-  // background drifts down 140px over the first 800px of scroll (~17% speed)
-  const y = useTransform(scrollY, [0, 800], [0, 140]);
-
   return (
     <div className="absolute inset-0 pointer-events-none" aria-hidden>
-      {/* Oversized parallax image — ±15% bleed prevents edge reveal at any scroll depth */}
-      <motion.div
-        className="absolute"
+      {/* background-attachment: fixed — image is pinned to viewport, zero JS, zero lag */}
+      <div
+        className="absolute inset-0"
         style={{
-          inset: "-15%",
-          y,
+          backgroundImage: "url('/thumb-1920-693632.jpg')",
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
-      >
-        <img
-          src="/thumb-1920-693632.jpg"
-          alt=""
-          className="w-full h-full object-cover select-none"
-          draggable={false}
-          style={{
-            filter: "grayscale(1) contrast(1.2) brightness(0.75)",
-          }}
-        />
-      </motion.div>
+      />
+
+      {/* Desaturate — mix-blend-mode: color with a neutral gray kills saturation.
+          CSS filter cannot be used: it breaks background-attachment: fixed (spec behaviour). */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundColor: "hsl(0 0% 35%)",
+          mixBlendMode: "color",
+        }}
+      />
 
       {/* Ordered-dither overlay — 4px Bayer-style checkerboard */}
       <div
@@ -39,8 +34,8 @@ export function HeroBackground() {
         }}
       />
 
-      {/* Readability veil — keeps text legible over photo */}
-      <div className="absolute inset-0 bg-background/55" />
+      {/* Readability veil */}
+      <div className="absolute inset-0 bg-black/40" />
     </div>
   );
 }

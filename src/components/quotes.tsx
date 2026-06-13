@@ -1,3 +1,5 @@
+import { Pen } from "@/components/pen";
+
 const quotes = [
   {
     text: "curiosity doesn't kill the cat but it sure as hell makes it stronger.",
@@ -32,7 +34,7 @@ export function Quotes() {
         <div className="mb-12">
           <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">in their own words</p>
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
-            the people running this thing
+            the people <Pen>running</Pen> this thing
           </h2>
         </div>
 

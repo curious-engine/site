@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { GithubLogo, TwitterLogo, LinkedinLogo, Globe } from "@phosphor-icons/react/dist/ssr";
+import { Pen } from "@/components/pen";
 
 const team = [
   {
@@ -38,7 +39,7 @@ export function Team() {
           <div className="max-w-md">
             <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">who&apos;s behind this</p>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
-              the people behind the engine
+              the people behind <Pen>the engine</Pen>
             </h2>
           </div>
           <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">

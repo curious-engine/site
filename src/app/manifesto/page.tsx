@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Separator } from "@/components/ui/separator";
+import { Pen } from "@/components/pen";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,10 +9,10 @@ export const metadata: Metadata = {
   description: "Why we exist, what annoys us, and what we're trying to build about it.",
 };
 
-const sections = [
+const sections: { index: string; heading: React.ReactNode; body: string[] }[] = [
   {
     index: "01",
-    heading: "it started with annoyance",
+    heading: <>it started with <Pen>annoyance</Pen></>,
     body: [
       "most things we've built started the same way. something bugged us. we looked around for something that fixed it. nothing did. so we built it ourselves.",
       "curious engine is that pattern, turned into a company.",
@@ -29,7 +30,7 @@ const sections = [
   },
   {
     index: "03",
-    heading: "we build things we'd actually use",
+    heading: <>we build things we&apos;d <Pen>actually use</Pen></>,
     body: [
       "this one sounds obvious but it's surprisingly rare.",
       "a lot of software gets built by people who understand the market but don't use the product. we do the opposite — we build things we use every day and then see if other people want to use them too.",
@@ -47,7 +48,7 @@ const sections = [
   },
   {
     index: "05",
-    heading: "curiosity is the only filter",
+    heading: <>curiosity is the <Pen>only filter</Pen></>,
     body: [
       "we work in things we find genuinely interesting. that's it.",
       "we're not trying to be in every vertical. we're not chasing whatever the hot space is right now. if we're not curious about it — like, actually curious, losing-sleep curious — we're not building it.",
@@ -75,7 +76,7 @@ export default function ManifestoPage() {
           <div className="mx-auto max-w-3xl flex flex-col gap-5">
             <p className="text-xs text-muted-foreground uppercase tracking-widest">manifesto</p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight">
-              our story
+              our <Pen>story</Pen>
             </h1>
             <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
               why we exist, what annoys us, and what we&apos;re trying to build about it.

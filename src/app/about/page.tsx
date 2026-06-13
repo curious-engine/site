@@ -3,6 +3,7 @@ import { Team } from "@/components/team";
 import { CTA } from "@/components/cta";
 import { Footer } from "@/components/footer";
 import { Separator } from "@/components/ui/separator";
+import { Pen } from "@/components/pen";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -21,7 +22,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-6xl flex flex-col gap-5">
             <p className="text-xs text-muted-foreground uppercase tracking-widest">about</p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight max-w-2xl">
-              two builders.
+              two <Pen>builders.</Pen>
               <br />
               <span className="text-muted-foreground font-normal">one product. more coming.</span>
             </h1>
@@ -38,7 +39,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
             <div className="flex flex-col gap-4">
               <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight leading-snug">
-                how it started
+                how it <Pen>started</Pen>
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 we were both annoyed at the same thing — AI coding tools that want to be your
@@ -79,7 +80,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-6xl">
             <div className="mb-12">
               <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">how we think</p>
-              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">the stuff we actually care about</h2>
+              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">the stuff we <Pen>actually</Pen> care about</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[

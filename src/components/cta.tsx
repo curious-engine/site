@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, EnvelopeSimple } from "@phosphor-icons/react/dist/ssr";
+import { Pen } from "@/components/pen";
 
 export function CTA() {
   return (
@@ -16,7 +17,7 @@ export function CTA() {
           <div className="relative flex flex-col gap-4 max-w-lg">
             <p className="text-xs text-background/50 uppercase tracking-widest">say hi</p>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight text-background">
-              if you&apos;re building something cool, hit us up!
+              if you&apos;re building <Pen>something cool</Pen>, hit us up!
             </h2>
             <p className="text-sm text-background/70 leading-relaxed">
               seriously. whether you&apos;re a builder, a tinkerer, someone who wants to work with us,

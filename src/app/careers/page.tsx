@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar";
 import { Careers } from "@/components/careers";
 import { CTA } from "@/components/cta";
 import { Footer } from "@/components/footer";
+import { Pen } from "@/components/pen";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function CareersPage() {
           <div className="mx-auto max-w-6xl flex flex-col gap-5">
             <p className="text-xs text-muted-foreground uppercase tracking-widest">come work with us</p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight max-w-2xl">
-              we&apos;re small.
+              we&apos;re <Pen>small.</Pen>
               <br />
               <span className="text-muted-foreground font-normal">we like it that way.</span>
             </h1>

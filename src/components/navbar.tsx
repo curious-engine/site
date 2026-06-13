@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   HandWaving,
   Wrench,
@@ -70,7 +71,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
+    <header className="fixed top-0 inset-x-0 z-50 border-b border-border bg-background">
       <div className="mx-auto max-w-6xl px-6 h-14 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
@@ -171,6 +172,7 @@ export function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-2">
+          <ThemeToggle />
           <Button variant="ghost" size="sm" className="text-sm font-normal text-muted-foreground" asChild>
             <Link href="/#contact">contact us</Link>
           </Button>
@@ -198,6 +200,7 @@ export function Navbar() {
           <Link href="/careers" className="text-sm text-muted-foreground hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>careers</Link>
           <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>about</Link>
           <div className="pt-2 border-t border-border flex flex-col gap-2">
+            <ThemeToggle />
             <Button variant="outline" size="sm" className="w-full justify-center" asChild>
               <Link href="/#contact">contact us</Link>
             </Button>

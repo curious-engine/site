@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { WordCycler } from "@/components/word-cycler";
 import { HeroBackground } from "@/components/hero-background";
+import { WordCycler } from "@/components/word-cycler";
+import { Pen } from "@/components/pen";
 
 export function Hero() {
   return (
@@ -15,13 +16,13 @@ export function Hero() {
       />
 
       <div className="relative mx-auto max-w-4xl flex flex-col items-center text-center gap-6">
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.08] text-foreground">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.08] text-white">
           curious about <WordCycler />.
           <br />
-          <span className="text-muted-foreground font-normal">building what&rsquo;s next.</span>
+          <span className="text-white/60 font-normal">building <Pen>what&rsquo;s next.</Pen></span>
         </h1>
 
-        <p className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
+        <p className="max-w-xl text-base sm:text-lg text-white/70 leading-relaxed">
           we&apos;re a small team out of bangalore building tools we wish existed.
           right now that&apos;s mimicode — an AI coding tool that lives in your editor,
           not in a chat tab. more things on the way.
@@ -33,26 +34,13 @@ export function Hero() {
               see what we&apos;re building <ArrowRight size={16} weight="bold" />
             </Link>
           </Button>
-          <Button variant="ghost" size="lg" className="rounded-md text-muted-foreground gap-2 px-6" asChild>
+          <Button variant="ghost" size="lg" className="rounded-md text-white/70 gap-2 px-6" asChild>
             <Link href="/manifesto">our story →</Link>
           </Button>
         </div>
 
-        {/* stat strip */}
-        <div className="mt-12 w-full grid grid-cols-2 md:grid-cols-4 gap-px border border-border rounded-xl overflow-hidden bg-border">
-          {[
-            { value: "1", label: "product, live right now" },
-            { value: "2", label: "founders building it" },
-            { value: "0", label: "outside investors" },
-            { value: "∞", label: "problems left to solve" },
-          ].map((s) => (
-            <div key={s.label} className="bg-background flex flex-col items-center justify-center py-6 px-4 gap-1">
-              <span className="text-2xl font-semibold tracking-tight">{s.value}</span>
-              <span className="text-xs text-muted-foreground">{s.label}</span>
-            </div>
-          ))}
-        </div>
       </div>
+
     </section>
   );
 }
