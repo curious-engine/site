@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "@/components/theme-toggle";
 import {
   HandWaving,
   Wrench,
@@ -21,6 +20,8 @@ import {
   BookOpen,
   Handshake,
   Terminal,
+  Info,
+  Briefcase,
   List,
   X,
 } from "@phosphor-icons/react";
@@ -31,6 +32,21 @@ const products = [
     name: "mimicode",
     desc: "Notebook-first AI coding tool. Write a question in your editor, save, get the answer in-file.",
     href: "https://mimicode.xyz",
+  },
+];
+
+const resources = [
+  {
+    icon: Info,
+    name: "About",
+    desc: "Who we are, where we're based, and why we started Curious Engine.",
+    href: "/about",
+  },
+  {
+    icon: Briefcase,
+    name: "Careers",
+    desc: "Open roles across the Curious Engine family of companies.",
+    href: "/careers",
   },
 ];
 
@@ -69,9 +85,16 @@ const solutions = [
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 0);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-md">
+    <header className={cn("fixed top-0 inset-x-0 z-50 border-b transition-colors duration-300", scrolled ? "border-border/40 bg-background/35 backdrop-blur-md" : "border-transparent bg-transparent")}>
       <div className="mx-auto max-w-6xl px-6 h-14 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
@@ -85,7 +108,7 @@ export function Navbar() {
             <NavigationMenuList>
               {/* Products dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm font-normal text-muted-foreground bg-transparent hover:text-foreground data-[state=open]:text-foreground">
+                <NavigationMenuTrigger className="text-sm font-medium text-foreground/70 bg-transparent hover:text-foreground data-[state=open]:text-foreground">
                   products
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -111,7 +134,7 @@ export function Navbar() {
 
               {/* Solutions dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm font-normal text-muted-foreground bg-transparent hover:text-foreground data-[state=open]:text-foreground">
+                <NavigationMenuTrigger className="text-sm font-medium text-foreground/70 bg-transparent hover:text-foreground data-[state=open]:text-foreground">
                   solutions
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -125,44 +148,46 @@ export function Navbar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
+              {/* Resources dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="text-sm font-medium text-foreground/70 bg-transparent hover:text-foreground data-[state=open]:text-foreground">
+                  resources
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="flex flex-col w-[340px] gap-2 p-4">
+                    {resources.map((r) => (
+                      <ListItem key={r.name} href={r.href} title={r.name} icon={r.icon}>
+                        {r.desc}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Community */}
+              <NavigationMenuItem>
+                <Link href="/community" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      "text-sm font-medium text-foreground/70 bg-transparent hover:text-foreground hover:bg-transparent"
+                    )}
+                  >
+                    community
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
               {/* Manifesto */}
               <NavigationMenuItem>
                 <Link href="/manifesto" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={cn(
                       navigationMenuTriggerStyle(),
-                      "text-sm font-normal text-muted-foreground bg-transparent hover:text-foreground hover:bg-transparent"
+                      "text-sm font-medium text-foreground/70 bg-transparent hover:text-foreground hover:bg-transparent"
                     )}
                   >
                     manifesto
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              {/* Careers */}
-              <NavigationMenuItem>
-                <Link href="/careers" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "text-sm font-normal text-muted-foreground bg-transparent hover:text-foreground hover:bg-transparent"
-                    )}
-                  >
-                    careers
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              {/* About */}
-              <NavigationMenuItem>
-                <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      "text-sm font-normal text-muted-foreground bg-transparent hover:text-foreground hover:bg-transparent"
-                    )}
-                  >
-                    about
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -172,7 +197,6 @@ export function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-2">
-          <ThemeToggle />
           <Button variant="ghost" size="sm" className="text-sm font-normal text-muted-foreground" asChild>
             <Link href="/#contact">contact us</Link>
           </Button>
@@ -193,14 +217,14 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-border/60 bg-background/80 backdrop-blur-md px-6 py-4 flex flex-col gap-3">
-          <Link href="/portfolio" className="text-sm text-muted-foreground hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>products</Link>
-          <Link href="/solutions/founders" className="text-sm text-muted-foreground hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>solutions</Link>
-          <Link href="/manifesto" className="text-sm text-muted-foreground hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>manifesto</Link>
-          <Link href="/careers" className="text-sm text-muted-foreground hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>careers</Link>
-          <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>about</Link>
+        <div className="md:hidden border-t border-border/40 bg-background/45 backdrop-blur-md px-6 py-4 flex flex-col gap-3">
+          <Link href="/portfolio" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>products</Link>
+          <Link href="/solutions/founders" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>solutions</Link>
+          <Link href="/about" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>about</Link>
+          <Link href="/careers" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>careers</Link>
+          <Link href="/community" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>community</Link>
+          <Link href="/manifesto" className="text-sm font-medium text-foreground/70 hover:text-foreground py-1" onClick={() => setMobileOpen(false)}>manifesto</Link>
           <div className="pt-2 border-t border-border flex flex-col gap-2">
-            <ThemeToggle />
             <Button variant="outline" size="sm" className="w-full justify-center" asChild>
               <Link href="/#contact">contact us</Link>
             </Button>

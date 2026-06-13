@@ -17,7 +17,7 @@ export function HeroBackground() {
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "repeating-conic-gradient(rgb(0 0 0 / 0.06) 0% 25%, transparent 0% 50%)",
+            "repeating-conic-gradient(rgb(0 0 0 / 0.10) 0% 25%, transparent 0% 50%)",
           backgroundSize: "4px 4px",
           mixBlendMode: "multiply",
         }}
