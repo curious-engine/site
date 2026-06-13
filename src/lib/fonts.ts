@@ -1,4 +1,4 @@
-import { Instrument_Serif, Instrument_Sans } from "next/font/google";
+import { Instrument_Serif, Instrument_Sans, Fragment_Mono } from "next/font/google";
 
 export const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -11,4 +11,10 @@ export const instrumentSans = Instrument_Sans({
   weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-sans",
+});
+
+export const fragmentMono = Fragment_Mono({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-fragment-mono",
 });

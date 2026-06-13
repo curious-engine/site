@@ -19,3 +19,6 @@ Components: navbar.tsx (Products dropdown, Solutions dropdown, Manifesto, Career
 ## session-reflect: 53566ceb24a0 — 2026-06-13T01:59:50Z
 Fixed framer-motion v12 import compatibility by renaming `DynamicAnimationOptions` to `AnimationOptions`. Build succeeded. Main inefficiency: after `grep -r` was blocked and error suggested using `rg`, model retried the unavailable `rg` command 4 times before reverting to plain `grep`, which worked immediately.
 
+## session-reflect: c697834a7be7 — 2026-06-13T08:54:42Z
+Agent completed font swap (Figtree→Instrument Sans), upgraded UI component library (Figtree→Luma radix), increased border radius (0.5rem→1rem), and fixed two post-upgrade type issues (calendar.tsx and spinner.tsx). Build succeeded. One inefficiency: when `grep -r` was blocked with explicit suggestion to use `rg`, agent tried non-recursive grep workarounds instead of switching to the recommended tool.
+
