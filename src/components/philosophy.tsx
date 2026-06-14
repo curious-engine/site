@@ -7,10 +7,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const paragraphs = [
-  `we don't build tools that think for you. we build tools that make you think better. the best engineers stay curious — not because they have to, but because they can't help it. curiosity doesn't replace skill. it sharpens it.`,
-  `most software is built by people who never use it. we build things we reach for every day. when the problem is yours, the solution is better. that's not a philosophy we chose — it's the only way we know how to work.`,
-  `we're not a lab. we don't do three-year roadmaps. we build something, ship it, watch what happens, and fix it fast. the gap between an idea and working software should be hours, not quarters.`,
-  `everything we make starts with a question we couldn't stop thinking about. that's the engine — not funding, not market research, not a pitch deck. just two people who can't leave a problem alone.`,
+  `you don't need permission to build. the best thing that ever happened to software was the internet — it removed the gatekeepers. we exist to remove the ones that are left. no committee. no approval process. just the work, and the people doing it.`,
+  `most builders never make it to market — not because they lack skill, but because they lack the first connection, the first validation, the first few hundred dollars that makes the thing feel real. that gap is artificial and we're here to close it.`,
+  `the funding we distribute isn't a salary and it's not a venture round. it's fuel. it goes to people who are actually shipping — distributed based on what you've built, not what you've promised. donated funds, transparent criteria, no equity taken. no pitch deck. no TAM slide. just work.`,
+  `we run events because the internet can't replace a room full of people who care about the same thing. you'll meet your next co-founder there. your next collaborator. maybe just the person who tells you your idea isn't crazy. the community is the engine.`,
 ];
 
 export function Philosophy() {

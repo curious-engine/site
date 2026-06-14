@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const words = ["everything", "something"];
+const words = ["everything", "community"];
 
 export function WordCycler() {
   const [index, setIndex] = useState(0);

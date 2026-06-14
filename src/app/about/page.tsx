@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About — Curious Engine",
-  description: "Two builders from bangalore. one product live. more on the way.",
+  description: "A non-profit for builders, engineers, and founders. We close the gap between an idea and the market.",
 };
 
 export default function AboutPage() {
@@ -22,14 +22,13 @@ export default function AboutPage() {
           <div className="mx-auto max-w-6xl flex flex-col gap-5">
             <p className="text-xs text-muted-foreground uppercase tracking-widest">about</p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight max-w-2xl">
-              two <Pen>builders.</Pen>
+              a non-profit for <Pen>builders.</Pen>
               <br />
-              <span className="text-muted-foreground font-normal">one product. more coming.</span>
+              <span className="text-muted-foreground font-normal">no gatekeepers. no permission needed.</span>
             </h1>
             <p className="max-w-lg text-base text-muted-foreground leading-relaxed">
-              curious engine is a small holding company from bangalore. we build tools we
-              actually want to use and hold onto them for as long as they&apos;re worth holding.
-              right now that&apos;s mimicode. more things on the way.
+              curious engine helps engineers, founders, and builders break into the market through
+              short funding, events, and community. based in bangalore. open to everyone building something real.
             </p>
           </div>
         </div>
@@ -42,29 +41,29 @@ export default function AboutPage() {
                 how it <Pen>started</Pen>
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                we were both annoyed at the same thing — AI coding tools that want to be your
-                pair programmer, constantly jumping in, suggesting things you didn&apos;t ask for,
-                making you feel like the junior dev on your own project.
+                we kept watching builders around us get stuck — not because they lacked skill or ideas,
+                but because the path to market has too many locks on it. investors want traction.
+                networks are closed. validation feels impossible without already being inside.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                so we built mimicode. it lives in your editor, answers when asked, and shuts
-                up otherwise. and once we had it, we needed a home to keep building from.
-                that&apos;s curious engine.
+                so we decided to build the thing that removes those locks. not another accelerator
+                with cohorts and demo days. a non-profit with a simple mission: put resources,
+                connections, and community in front of builders who are already doing the work.
               </p>
               <Link
                 href="/manifesto"
                 className="text-sm font-medium hover:text-muted-foreground transition-colors mt-2 w-fit"
               >
-                read the full story →
+                read the full manifesto →
               </Link>
             </div>
 
             <div className="grid grid-cols-2 gap-px border border-border rounded-xl overflow-hidden bg-border">
               {[
                 { value: "2024", label: "started building" },
-                { value: "1", label: "product live" },
-                { value: "2", label: "founders" },
                 { value: "BLR", label: "based in" },
+                { value: "free", label: "to join" },
+                { value: "0%", label: "equity taken" },
               ].map((s) => (
                 <div key={s.label} className="bg-background flex flex-col justify-center px-6 py-8 gap-1">
                   <span className="text-2xl font-semibold tracking-tight">{s.value}</span>
@@ -79,22 +78,22 @@ export default function AboutPage() {
         <div className="px-6 py-20 border-b border-border bg-muted/30">
           <div className="mx-auto max-w-6xl">
             <div className="mb-12">
-              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">how we think</p>
-              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">the stuff we <Pen>actually</Pen> care about</h2>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">how we operate</p>
+              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">the principles we <Pen>actually</Pen> follow</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
                 {
-                  title: "build things you'd use",
-                  body: "sounds obvious. surprisingly rare. we don't build for markets, we build for ourselves and then see who else wants it.",
+                  title: "autonomy first",
+                  body: "you don't ask permission here. you act, then share what you did. the only authority is basic community moderation. everything else is yours.",
                 },
                 {
-                  title: "hold, don't flip",
-                  body: "no fund, no LPs, no exit timeline. if we build it, we keep it. that changes every decision downstream — for the better.",
+                  title: "funding follows work",
+                  body: "donated funds are distributed based on what you've shipped. no pitch deck, no equity, no investor pressure. just show the work.",
                 },
                 {
-                  title: "curiosity first",
-                  body: "we only work on things we actually find interesting. if we're not losing sleep about it, we're probably not the right people to build it.",
+                  title: "community is the point",
+                  body: "the events, the connections, the room full of builders — that's not a side effect of what we do. it's the whole thing.",
                 },
               ].map((v) => (
                 <div key={v.title} className="flex flex-col gap-3">

@@ -11,27 +11,31 @@ import {
 const faqs = [
   {
     q: "what is curious engine?",
-    a: "we're a small holding company — two builders who kept making things and eventually decided to give the whole operation a name. right now we have one product (mimicode) and a lot of ideas. we build things we actually want to use, and we hold them for as long as they're worth holding.",
+    a: "curious engine is a non-profit organisation based in bangalore. we help engineers, builders, and founders break into the market — through funding, events, and community. the barrier between a good idea and a working product shouldn't be money or connections. we work to remove it.",
   },
   {
-    q: "wait, a holding company? aren't those for old money?",
-    a: "ha, yeah, the word sounds stuffy. but the structure just means we own what we build instead of raising a fund and returning it to LPs. no clock running down, no forced exits. we build it, we keep it, we keep making it better.",
+    q: "how does the funding work?",
+    a: "funding comes entirely from donations. we distribute it based on productivity — meaning what you've actually shipped, not what you've promised. there's no pitch deck required, no equity taken, no investor relationship. you apply, you build, and the funds follow the work.",
   },
   {
-    q: "what's mimicode?",
-    a: "mimicode is an AI coding tool that lives inside your editor. you open a file called code.mimi, write a question, save it, and the answer appears below a divider — in the same file. no chat window. no switching tabs. one binary, zero dependencies. it's in beta and you can try it right now at mimicode.xyz.",
+    q: "who can apply?",
+    a: "anyone building something. engineers working on side projects, founders at zero revenue, solo builders with an idea they can't let go of. if you're making something real and you can show the work, you can apply. we don't care about credentials.",
   },
   {
-    q: "are you looking for people to work with?",
-    a: "always. if you're building something interesting, or you want to build something interesting with us, just email hello@curiousengine.com. we don't have a formal process — we just talk to people who seem cool and go from there.",
+    q: "do you take equity or have any conditions?",
+    a: "no. we're a non-profit. we don't take equity, we don't take a cut, we don't ask for anything back. the funds are a grant, not an investment. the only thing we ask is that you keep building.",
   },
   {
-    q: "can i pitch you something?",
-    a: "sure, but don't stress about it being polished. we care a lot more about what you're actually building and why you can't stop thinking about it than whether your deck has a TAM slide. just tell us what it is.",
+    q: "what kind of events do you run?",
+    a: "in-person events in bangalore, run by the head of curious engine. think workshops, builder meetups, demo nights, and open hack sessions. the goal is simple — put builders in the same room and get out of the way. no formal structure, no permission needed to show up.",
+  },
+  {
+    q: "what does 'no permission needed' mean?",
+    a: "it's our core philosophy. inside the curious engine community, you don't ask permission to take action — you act, then report. the only authority is moderation for basic community rules. everything else is up to you. if you want to start a project, organise something, or collaborate with someone, just do it.",
   },
   {
     q: "where are you based?",
-    a: "bangalore, india. we work remotely and keep weird hours. if you're ever in the city though, let's grab a coffee.",
+    a: "bangalore, india. events happen here in person. the community and funding programs are open to builders everywhere, but if you're in bangalore — come to the events. there's no substitute for being in the room.",
   },
 ];
 

@@ -94,16 +94,17 @@ export function Hero() {
         {/* ── Headline: amigo curtain reveal, line by line ─────────────────── */}
         <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.12] text-foreground">
           <RevealLine delay={0.05}>
-            curious about <WordCycler />.
+            curious about <WordCycler />;
+          </RevealLine>
+          <RevealLine delay={0.18}>
+            break barriers.
           </RevealLine>
         </h1>
 
         {/* ── Body copy: lovart blur-fade ───────────────────────────────────── */}
         <BlurFade delay={0.42} y={18}>
-          <p className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-            we&apos;re a small team out of bangalore building tools we wish existed.
-            right now that&apos;s mimicode — an AI coding tool that lives in your editor,
-            not in a chat tab. more things on the way.
+          <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
+            a non-profit for builders, engineers, and founders. validation, short funding, and community — no gatekeepers.
           </p>
         </BlurFade>
 
@@ -115,8 +116,8 @@ export function Hero() {
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
           >
             <Button size="lg" className="rounded-full gap-2 px-7" asChild>
-              <Link href="/portfolio">
-                see what we&apos;re building <ArrowRight size={16} weight="bold" />
+              <Link href="/community">
+                get involved <ArrowRight size={16} weight="bold" />
               </Link>
             </Button>
           </motion.div>
@@ -126,7 +127,7 @@ export function Hero() {
             transition={{ type: "spring", stiffness: 400, damping: 22 }}
           >
             <Button variant="ghost" size="lg" className="rounded-full gap-2 px-7" asChild>
-              <Link href="/manifesto">our story →</Link>
+              <Link href="/manifesto">our manifesto →</Link>
             </Button>
           </motion.div>
         </BlurFade>

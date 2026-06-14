@@ -3,19 +3,19 @@ import { Separator } from "@/components/ui/separator";
 import { libreCaslonDisplay } from "@/lib/fonts";
 
 const links = {
-  Company: [
+  Organisation: [
     { label: "about", href: "/about" },
     { label: "manifesto", href: "/manifesto" },
-    { label: "careers", href: "/careers" },
-    { label: "contact", href: "mailto:hello@curiousengine.com" },
+    { label: "volunteer", href: "/careers" },
+    { label: "contact", href: "mailto:hello@curiousengine.org" },
+  ],
+  Programs: [
+    { label: "funding", href: "/programs" },
+    { label: "events", href: "/events" },
+    { label: "community", href: "/community" },
   ],
   Products: [
     { label: "mimicode", href: "https://mimicode.xyz" },
-  ],
-  Solutions: [
-    { label: "for founders", href: "#" },
-    { label: "for operators", href: "#" },
-    { label: "for builders", href: "#" },
   ],
   Legal: [
     { label: "privacy policy", href: "#" },
@@ -35,7 +35,7 @@ export function Footer() {
               <span className="font-semibold text-sm tracking-tight">curious engine</span>
             </Link>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              a small team building tools we wish existed. based in bangalore, working on the internet.
+              a non-profit breaking barriers for builders, engineers, and founders. based in bangalore.
             </p>
             <p className="text-xs text-muted-foreground">Bangalore, India</p>
           </div>

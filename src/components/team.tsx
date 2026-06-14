@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { GithubLogo, TwitterLogo, LinkedinLogo, Globe } from "@phosphor-icons/react/dist/ssr";
+import { GithubLogo, TwitterLogo, LinkedinLogo, Globe, Envelope } from "@phosphor-icons/react/dist/ssr";
 import { Pen } from "@/components/pen";
 import { libreCaslonText } from "@/lib/fonts";
 
@@ -15,6 +15,7 @@ const team = [
       { icon: TwitterLogo, href: "https://x.com/JakeOJeffYT", label: "Twitter" },
       { icon: Globe, href: "https://paulyn.lol", label: "Website" },
       { icon: LinkedinLogo, href: "#", label: "LinkedIn" },
+      { icon: Envelope, href: "mailto:jake@curiousengine.org", label: "Email" },
     ],
   },
   {
@@ -28,6 +29,7 @@ const team = [
       { icon: LinkedinLogo, href: "https://in.linkedin.com/in/alvin-liju-0aab55307", label: "LinkedIn" },
       { icon: TwitterLogo, href: "#", label: "Twitter" },
       { icon: Globe, href: "https://alvinliju.me", label: "Portfolio" },
+      { icon: Envelope, href: "mailto:alvin@curiousengine.org", label: "Email" },
     ],
   },
 ];
@@ -44,7 +46,7 @@ export function Team() {
             </h2>
           </div>
           <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">
-            two builders from bangalore and kochi. got tired of AI tools that think for you — so they built one that doesn&apos;t.
+              two builders from bangalore. running curious engine and building tools for the community.
           </p>
         </div>
 

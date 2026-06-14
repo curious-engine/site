@@ -6,62 +6,60 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Manifesto — Curious Engine",
-  description: "Why we exist, what annoys us, and what we're trying to build about it.",
+  description: "Why we exist, what we believe, and how we think the world should work for builders.",
 };
 
 const sections: { index: string; heading: React.ReactNode; body: string[] }[] = [
   {
     index: "01",
-    heading: <>it started with <Pen>annoyance</Pen></>,
+    heading: <>it started with <Pen>a barrier</Pen></>,
     body: [
-      "most things we've built started the same way. something bugged us. we looked around for something that fixed it. nothing did. so we built it ourselves.",
-      "curious engine is that pattern, turned into a company.",
-      "we're not here because we spotted a market gap or ran a TAM analysis. we're here because we kept building things and at some point it made sense to give the whole operation a name.",
+      "every engineer has had the moment. the idea is clear. the skills are there. but the path from idea to market is littered with gatekeepers — investors who want traction before they fund you, networks you don't have access to, validation you can't get because you're not already inside.",
+      "curious engine is our answer to that. not an accelerator, not a VC, not a networking event. a non-profit that exists to close the gap between a builder and their first real step.",
     ],
   },
   {
     index: "02",
-    heading: "we don't think AI should be your co-pilot",
+    heading: "you don't need permission",
     body: [
-      "this is the thing that annoys us most right now. every AI coding tool is trying to be your pair programmer. suggesting things you didn't ask for. debating architecture. picking approaches. volunteering opinions.",
-      "we think that's wrong. not just wrong in principle — wrong in practice. the more an AI does the thinking for you, the worse a programmer you become. the joy of it is figuring things out. that's the whole point.",
-      "mimicode is our answer to that. it's a tool in the unix sense — a rubber duck that can actually run commands. you write a question in a file. you save it. the answer appears below a divider. that's it. no chat tab. no sidebar. no opinion on what you should build.",
+      "this is the core of everything we do. the traditional model asks you to wait — wait for funding, wait for the right connection, wait until the idea is validated by someone with more credentials than you.",
+      "we think that model is broken. not just inefficient — actively harmful. the best builders we know built first and asked for permission later. the worst advice they ever got was to wait.",
+      "inside curious engine, the default answer is go. you want to start a project, organise something, collaborate with someone? do it. the only rules are community moderation basics. everything else is up to you.",
     ],
   },
   {
     index: "03",
-    heading: <>we build things we&apos;d <Pen>actually use</Pen></>,
+    heading: <>funding should follow <Pen>the work</Pen></>,
     body: [
-      "this one sounds obvious but it's surprisingly rare.",
-      "a lot of software gets built by people who understand the market but don't use the product. we do the opposite — we build things we use every day and then see if other people want to use them too.",
-      "if we stop using it, we stop building it. and if we can't stop using it, we keep making it better until it's exactly what we need.",
+      "we distribute funds from donations. no equity, no returns, no investor relationship. the only thing we track is what you've shipped.",
+      "we call it productivity-based distribution. if you're building, documenting it, shipping things — the funding follows. if you're stuck on a deck and not actually making anything, it doesn't. simple.",
+      "this isn't a grant application process. it's closer to a stipend for people already doing the work. we want to remove the money anxiety, not replace it with a different kind of paperwork.",
     ],
   },
   {
     index: "04",
-    heading: "we're not going anywhere",
+    heading: <>community is the <Pen>actual product</Pen></>,
     body: [
-      "we don't have a fund with a 10-year life. no LPs asking for distributions. no exit timeline.",
-      "when we build something, we're planning to own it for a long time. that changes how we make decisions. we're not optimising for a series A or an acquisition — we're optimising for a product that people actually love using in five years.",
-      "it also means we can say no to stuff. no to bad partnerships. no to moving fast on the wrong thing. no to the kind of growth that hollows a product out.",
+      "we run in-person events in bangalore. workshops, demo nights, open hack sessions. the format is loose — because loose formats produce better conversations than structured ones.",
+      "the goal is to put builders in the same room. you'll find your next co-founder at one of these. or someone who's solved the exact problem you're stuck on. or just confirmation that the thing you're building isn't crazy.",
+      "the internet is good for a lot of things. it is not good for the specific moment when you look across a table at someone and realise they're trying to build the same future you are.",
     ],
   },
   {
     index: "05",
-    heading: <>curiosity is the <Pen>only filter</Pen></>,
+    heading: "we exist for the long run",
     body: [
-      "we work in things we find genuinely interesting. that's it.",
-      "we're not trying to be in every vertical. we're not chasing whatever the hot space is right now. if we're not curious about it — like, actually curious, losing-sleep curious — we're not building it.",
-      "alvin puts it well on his website: \"curiosity doesn't kill the cat but it sure as hell makes it stronger.\" that's more or less the thesis.",
+      "we're not trying to graduate you into a VC round. we're not measuring success by how many companies we've 'accelerated'. we want to build a permanent community of builders in bangalore and beyond — one that compounds over years, not quarters.",
+      "the people who went through this thing in year one should still be connected to the people going through it in year five. that's the value. the community itself.",
     ],
   },
   {
     index: "06",
-    heading: "what we're actually trying to do",
+    heading: "what we're actually asking you to do",
     body: [
-      "build a small number of things really well. keep them around for a long time. hire people who care about the work, not the optics.",
-      "and keep asking questions we can't stop thinking about.",
-      "that's it. no grand vision deck. no category-defining nonsense. just two builders from bangalore who got really annoyed about something and decided to fix it. if that sounds like you, we'd love to talk.",
+      "show up. build something. document the work. connect with the people around you.",
+      "that's it. no grand vision deck. no category pitch. no proof of market. just make the thing, show us it's moving, and we'll make sure the resources are there.",
+      "if that sounds like you — we'd love to have you.",
     ],
   },
 ];
@@ -76,10 +74,10 @@ export default function ManifestoPage() {
           <div className="mx-auto max-w-3xl flex flex-col gap-5">
             <p className="text-xs text-muted-foreground uppercase tracking-widest">manifesto</p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight">
-              our <Pen>story</Pen>
+              why we <Pen>exist</Pen>
             </h1>
             <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
-              why we exist, what annoys us, and what we&apos;re trying to build about it.
+              what we believe, and how we think the world should work for builders.
             </p>
           </div>
         </div>
@@ -111,17 +109,17 @@ export default function ManifestoPage() {
             {/* Closing */}
             <div className="pt-4 border-t border-border flex flex-col gap-3">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                if you made it this far and something here resonated — just email us. hello@curiousengine.com.
-                we&apos;re pretty responsive.
+                if something here resonated — come to an event, apply for funding, or just email us.
+                hello@curiousengine.org. we&apos;re pretty responsive.
               </p>
               <div className="flex items-center gap-6 pt-1">
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-sm font-medium">Alvin Liju</span>
-                  <a href="https://alvinliju.me" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">alvinliju.me</a>
-                </div>
-                <div className="flex flex-col gap-0.5">
                   <span className="text-sm font-medium">Paulyn</span>
                   <a href="https://paulyn.lol" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">paulyn.lol</a>
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-sm font-medium">Alvin Liju</span>
+                  <a href="https://alvinliju.me" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">alvinliju.me</a>
                 </div>
               </div>
             </div>

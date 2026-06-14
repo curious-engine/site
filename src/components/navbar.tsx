@@ -26,6 +26,9 @@ import {
   EnvelopeSimple,
   List,
   X,
+  CurrencyDollar,
+  CalendarBlank,
+  UsersThree,
 } from "@phosphor-icons/react";
 
 /* ─── data ──────────────────────────────────────────────────────────────── */
@@ -38,18 +41,31 @@ const products = [
   },
 ];
 
-const solutions = [
-  { icon: HandWaving, name: "For Founders",   desc: "Capital, infrastructure, and a permanent home for your company.",           href: "/solutions/founders"     },
-  { icon: Wrench,     name: "For Operators",  desc: "Join the group and run a business inside the Curious Engine ecosystem.",    href: "/solutions/operators"    },
-  { icon: Buildings,  name: "For Enterprises",desc: "Custom deployments and partnerships across our portfolio.",                 href: "/solutions/enterprises"  },
-  { icon: BookOpen,   name: "Case Studies",   desc: "How our portfolio companies have grown with shared infrastructure.",        href: "/solutions/case-studies" },
-  { icon: Handshake,  name: "Partners",       desc: "Strategic partners, service providers, and co-builders.",                   href: "/solutions/partners"     },
+const programs = [
+  {
+    icon: CurrencyDollar,
+    name: "Funding",
+    desc: "Short grants distributed based on what you actually ship. no pitch deck. no equity.",
+    href: "/programs",
+  },
+  {
+    icon: CalendarBlank,
+    name: "Events",
+    desc: "In-person events in Bangalore. workshops, demo nights, and open hack sessions.",
+    href: "/events",
+  },
+  {
+    icon: UsersThree,
+    name: "Community",
+    desc: "A place for builders, engineers, and founders to connect without gatekeepers.",
+    href: "/community",
+  },
 ];
 
 const resources = [
-  { icon: Info,           name: "About",   desc: "Who we are, where we're based, and why we started Curious Engine.", href: "/about"                        },
-  { icon: Briefcase,      name: "Careers", desc: "Open roles across the Curious Engine family of companies.",         href: "/careers"                      },
-  { icon: EnvelopeSimple, name: "Contact", desc: "Say hi, pitch us something, or just see what happens.",             href: "mailto:hello@curiousengine.com" },
+  { icon: Info,           name: "About",   desc: "Who we are, why we started this, and what we're trying to do.", href: "/about"                        },
+  { icon: Briefcase,      name: "Volunteer", desc: "Open volunteer and part-time roles across Curious Engine.",     href: "/careers"                      },
+  { icon: EnvelopeSimple, name: "Contact", desc: "Say hi, pitch something, or just ask a question.",             href: "mailto:hello@curiousengine.org" },
 ];
 
 /* ─── spring used for pill morph ────────────────────────────────────────── */
@@ -146,11 +162,11 @@ export function Navbar() {
                   </ul>
                 </NavItem>
 
-                <NavItem label="solutions">
-                  <ul className="grid w-[520px] grid-cols-2 gap-2 p-4">
-                    {solutions.map((s) => (
-                      <ListItem key={s.name} href={s.href} title={s.name} icon={s.icon}>
-                        {s.desc}
+                <NavItem label="programs">
+                  <ul className="flex flex-col w-[340px] gap-2 p-4">
+                    {programs.map((p) => (
+                      <ListItem key={p.name} href={p.href} title={p.name} icon={p.icon}>
+                        {p.desc}
                       </ListItem>
                     ))}
                   </ul>
@@ -166,7 +182,6 @@ export function Navbar() {
                   </ul>
                 </NavItem>
 
-                <PlainLink href="/community">community</PlainLink>
                 <PlainLink href="/manifesto">manifesto</PlainLink>
 
               </NavigationMenuList>
@@ -181,7 +196,7 @@ export function Navbar() {
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
             >
               <Button size="sm" className="text-sm rounded-full px-4" asChild>
-                <Link href="/portfolio">portfolio →</Link>
+                <Link href="/community">get involved →</Link>
               </Button>
             </motion.div>
           </div>
@@ -218,12 +233,12 @@ export function Navbar() {
               transition={{ duration: 0.26, ease: EASE }}
             >
               {[
-                { href: "/portfolio",          label: "products"   },
-                { href: "/solutions/founders", label: "solutions"  },
-                { href: "/about",              label: "about"      },
-                { href: "/careers",            label: "careers"    },
-                { href: "/community",          label: "community"  },
-                { href: "/manifesto",          label: "manifesto"  },
+                { href: "/programs",  label: "funding"    },
+                { href: "/events",   label: "events"     },
+                { href: "/community",label: "community"  },
+                { href: "/about",    label: "about"      },
+                { href: "/manifesto",label: "manifesto"  },
+                { href: "/careers",  label: "volunteer"  },
               ].map(({ href, label }, i) => (
                 <motion.div
                   key={href}
@@ -246,9 +261,11 @@ export function Navbar() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.24, duration: 0.3 }}
               >
-                <Button size="sm" className="w-full justify-center rounded-full" asChild>
-                  <Link href="/portfolio">explore portfolio →</Link>
-                </Button>
+                  <Link href="/community" onClick={() => setMobileOpen(false)} className="w-full">
+                    <Button size="sm" className="w-full justify-center rounded-full" asChild>
+                      <span>get involved →</span>
+                    </Button>
+                  </Link>
               </motion.div>
             </motion.div>
           )}

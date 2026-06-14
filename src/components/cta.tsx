@@ -15,14 +15,13 @@ export function CTA() {
           />
 
           <div className="relative flex flex-col gap-4 max-w-lg">
-            <p className="text-xs text-background/50 uppercase tracking-widest">say hi</p>
+            <p className="text-xs text-background/50 uppercase tracking-widest">get involved</p>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight text-background">
-              if you&apos;re building <Pen>something cool</Pen>, hit us up!
+              if you&apos;re building, <Pen>you belong here.</Pen>
             </h2>
             <p className="text-sm text-background/70 leading-relaxed">
-              seriously. whether you&apos;re a builder, a tinkerer, someone who wants to work with us,
-              or just someone who found what we&apos;re doing interesting — we&apos;d love to hear from you.
-              no pitch deck required.
+              no application. no gatekeepers. no permission required. show up, build things, meet people
+              who are doing the same. the community is free and the funding follows the work.
             </p>
           </div>
 
@@ -33,9 +32,9 @@ export function CTA() {
               className="rounded-md gap-2 px-6 bg-background text-foreground hover:bg-background/90"
               asChild
             >
-              <Link href="mailto:hello@curiousengine.com">
-                <EnvelopeSimple size={16} />
-                drop us a message
+              <Link href="/community">
+                <ArrowRight size={16} weight="bold" />
+                join the community
               </Link>
             </Button>
             <Button
@@ -44,8 +43,9 @@ export function CTA() {
               className="rounded-md gap-2 px-6 text-background/70 hover:text-background hover:bg-background/10"
               asChild
             >
-              <Link href="/portfolio">
-                see what we&apos;re building <ArrowRight size={16} weight="bold" />
+              <Link href="mailto:hello@curiousengine.org">
+                <EnvelopeSimple size={16} />
+                drop us a message
               </Link>
             </Button>
           </div>
