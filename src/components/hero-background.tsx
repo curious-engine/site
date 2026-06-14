@@ -3,13 +3,16 @@ import Image from "next/image";
 export function HeroBackground() {
   return (
     <div className="absolute inset-0 pointer-events-none" aria-hidden>
-      <Image
-        src="/bg.png"
-        alt=""
-        fill
-        className="object-cover"
-        priority
-      />
+      <div className="relative w-full h-full">
+        <Image
+          src="/bg2.png"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+      </div>
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/55" />
