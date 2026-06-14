@@ -1,8 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@phosphor-icons/react";
 import { HeroBackground } from "@/components/hero-background";
@@ -65,8 +66,21 @@ function BlurFade({
 }
 
 export function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+  const borderRadius = useTransform(scrollYProgress, [0, 0.7], [0, 28]);
+  const scale        = useTransform(scrollYProgress, [0, 0.7], [1, 0.93]);
+  const marginTop    = useTransform(scrollYProgress, [0, 0.7], ["0px", "10px"]);
+
   return (
-    <section className="relative min-h-svh flex flex-col justify-center px-6 overflow-hidden">
+    <div ref={containerRef} className="relative h-[150svh]">
+      <motion.section
+        style={{ borderRadius, scale, marginTop, overflow: "hidden" }}
+        className="sticky top-0 h-svh relative flex flex-col justify-center px-6"
+      >
       <HeroBackground />
 
       {/* subtle grid */}
@@ -118,6 +132,7 @@ export function Hero() {
         </BlurFade>
 
       </div>
-    </section>
+      </motion.section>
+    </div>
   );
 }

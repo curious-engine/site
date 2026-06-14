@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import { libreCaslonDisplay } from "@/lib/fonts";
 
 const links = {
   Company: [
@@ -72,7 +73,7 @@ export function Footer() {
 
       {/* Big faded wordmark — bottom of footer, bleeds out */}
       <div className="relative overflow-hidden select-none pointer-events-none" aria-hidden>
-        <p className="text-[clamp(3rem,13vw,11rem)] font-bold tracking-tighter leading-none text-center text-foreground/[0.055] whitespace-nowrap pb-0">
+        <p className={`${libreCaslonDisplay.className} text-[clamp(5rem,20vw,18rem)] font-bold tracking-tighter leading-none text-center text-foreground/[0.055] whitespace-nowrap pb-0`}>
           CURIOUS ENGINE
         </p>
         {/* fade bottom half to transparent */}

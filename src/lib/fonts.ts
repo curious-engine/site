@@ -1,15 +1,15 @@
-import { Libre_Caslon_Display, Instrument_Serif, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 
-export const libreCaslonDisplay = Libre_Caslon_Display({
+export const libreCaslonDisplay = Fraunces({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal"],
   variable: "--font-libre-caslon",
 });
 
-export const instrumentSerif = Instrument_Serif({
+export const libreCaslonText = Fraunces({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
   style: ["italic"],
 });
 

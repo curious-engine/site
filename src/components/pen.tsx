@@ -1,8 +1,8 @@
-import { instrumentSerif } from "@/lib/fonts";
+import { libreCaslonText } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
 /**
- * Inline handwriting emphasis — Instrument Serif italic.
+ * Inline decorative accent — Libre Caslon Text italic.
  * Drop inside any heading: <h1>building <Pen>what's next.</Pen></h1>
  */
 export function Pen({
@@ -15,8 +15,8 @@ export function Pen({
   return (
     <span
       className={cn(
-        instrumentSerif.className,
-        "font-normal italic tracking-normal",
+        libreCaslonText.className,
+        "italic tracking-normal",
         className
       )}
     >

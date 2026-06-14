@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { GithubLogo, TwitterLogo, LinkedinLogo, Globe } from "@phosphor-icons/react/dist/ssr";
 import { Pen } from "@/components/pen";
+import { libreCaslonText } from "@/lib/fonts";
 
 const team = [
   {
@@ -62,7 +63,7 @@ export function Team() {
               <div className="flex flex-col gap-0.5">
                 <span className="font-semibold text-sm">{m.name}</span>
                 <span className="text-xs text-muted-foreground font-mono">@{m.handle}</span>
-                <span className="text-xs text-muted-foreground mt-0.5">{m.role}</span>
+                <span className={`${libreCaslonText.className} text-xs text-muted-foreground mt-0.5 italic`}>{m.role}</span>
               </div>
               <p className="text-xs text-muted-foreground leading-relaxed">{m.bio}</p>
               <div className="flex items-center gap-2">

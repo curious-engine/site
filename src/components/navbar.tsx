@@ -80,6 +80,7 @@ export function Navbar() {
       {/* Width wrapper: animates from full → 768 px on scroll */}
       <motion.div
         className="w-full pointer-events-auto"
+        initial={{ maxWidth: 100000, paddingLeft: 0, paddingRight: 0, paddingTop: 0 }}
         animate={{
           maxWidth: scrolled ? 784 : 100000,
           paddingLeft:  scrolled ? 16 : 0,
@@ -274,16 +275,17 @@ function NavItem({ label, children }: { label: string; children: React.ReactNode
 function PlainLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <NavigationMenuItem>
-      <Link href={href} legacyBehavior passHref>
-        <NavigationMenuLink
+      <NavigationMenuLink asChild>
+        <Link
+          href={href}
           className={cn(
             navigationMenuTriggerStyle(),
             "text-sm font-medium text-foreground/60 bg-transparent hover:text-foreground hover:bg-muted/60 rounded-full h-8 px-3 transition-colors"
           )}
         >
           {children}
-        </NavigationMenuLink>
-      </Link>
+        </Link>
+      </NavigationMenuLink>
     </NavigationMenuItem>
   );
 }

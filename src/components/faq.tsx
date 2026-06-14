@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Accordion,
@@ -36,77 +35,44 @@ const faqs = [
   },
 ];
 
-/*
- * Images pop out of the section with a 3D spring effect.
- * negative top/left/right values let them bleed outside the section border —
- * the section has no overflow clip so they're fully visible.
- * rotateTo is the resting angle; the animation starts from 3x that for drama.
- */
-const FLOATING_IMAGES = [
-  { src: "/art/heart.png",  size: 96,  top: "-10%",  left: "2%",   rotateTo: -18, delay: 0    },
-  { src: "/art/saturn.png", size: 118, top: "-8%",   right: "3%",  rotateTo: 16,  delay: 0.1  },
-  { src: "/art/star.png",   size: 82,  top: "40%",   left: "-3%",  rotateTo: 10,  delay: 0.18 },
-  { src: "/art/ticket.png", size: 90,  top: "38%",   right: "-2%", rotateTo: -14, delay: 0.12 },
-  { src: "/art/shoe.png",   size: 100, bottom: "-8%", right: "6%", rotateTo: 12,  delay: 0.22 },
-];
-
 export function FAQ() {
   return (
-    /* No overflow-hidden — images bleed outside the section boundaries */
-    <section className="relative py-24 px-6 border-t border-border bg-muted/30">
-      {FLOATING_IMAGES.map((img, i) => (
+    <section className="py-24 px-6 border-t border-border bg-muted/30">
+      <div className="mx-auto max-w-3xl">
         <motion.div
-          key={i}
-          aria-hidden
-          className="pointer-events-none select-none absolute z-0 hidden sm:block"
-          style={{
-            top:    "top"    in img ? img.top    : undefined,
-            left:   "left"   in img ? img.left   : undefined,
-            right:  "right"  in img ? img.right  : undefined,
-            bottom: "bottom" in img ? img.bottom : undefined,
-          }}
-          initial={{ scale: 0.05, opacity: 0, rotate: img.rotateTo * 3 }}
-          whileInView={{ scale: 1, opacity: 0.92, rotate: img.rotateTo }}
+          className="mb-12"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{
-            type: "spring",
-            stiffness: 180,
-            damping: 14,
-            delay: img.delay,
-          }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <Image
-            src={img.src}
-            alt=""
-            width={img.size}
-            height={img.size}
-            className="object-contain drop-shadow-xl"
-          />
-        </motion.div>
-      ))}
-
-      <div className="relative z-10 mx-auto max-w-3xl">
-        <div className="mb-12">
           <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">common questions</p>
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
             things people ask us
           </h2>
-        </div>
+        </motion.div>
 
         <Accordion type="single" collapsible className="flex flex-col gap-2">
           {faqs.map((f, i) => (
-            <AccordionItem
+            <motion.div
               key={i}
-              value={`item-${i}`}
-              className="rounded-xl border border-border bg-card px-6 data-[state=open]:border-foreground/20"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.35, ease: "easeOut", delay: i * 0.06 }}
             >
-              <AccordionTrigger className="text-base font-medium py-5 hover:no-underline text-left">
-                {f.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-base text-muted-foreground leading-relaxed pb-5">
-                {f.a}
-              </AccordionContent>
-            </AccordionItem>
+              <AccordionItem
+                value={`item-${i}`}
+                className="rounded-xl border border-border bg-card px-6 data-[state=open]:border-foreground/20"
+              >
+                <AccordionTrigger className="text-base font-medium py-5 hover:no-underline text-left">
+                  {f.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-base text-muted-foreground leading-relaxed pb-5">
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
           ))}
         </Accordion>
       </div>
