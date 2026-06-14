@@ -1,18 +1,17 @@
-import Image from "next/image";
-
 export function HeroBackground() {
   return (
     <div className="absolute inset-0 pointer-events-none" aria-hidden>
-      <div className="relative w-full h-full">
-        <Image
-          src="/bg2.png"
-          alt=""
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-      </div>
+      {/* Parallax image — background-attachment: fixed keeps it fixed to the viewport */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('/3w.png')",
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      />
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/55" />

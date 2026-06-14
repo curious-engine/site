@@ -68,9 +68,11 @@ const resources = [
   { icon: EnvelopeSimple, name: "Contact", desc: "Say hi, pitch something, or just ask a question.",             href: "mailto:hello@curiousengine.org" },
 ];
 
-/* ─── spring used for pill morph ────────────────────────────────────────── */
-const MORPH     = { type: "spring", stiffness: 280, damping: 34 } as const; // snap to pill
-const MORPH_OUT = { type: "spring", stiffness: 120, damping: 18 } as const; // slow-bounce back to bar
+/* ─── transitions for pill morph ───────────────────────────────────────── */
+// [0.4, 0, 0.2, 1] — symmetric ease-in-out: motion is visible and slow
+// throughout the full duration, not piled at start or end.
+const MORPH     = { type: "tween", duration: 1.4, ease: [0, 0, 0.58, 1] } as const;
+const MORPH_OUT = { type: "tween", duration: 1.4, ease: [0, 0, 0.58, 1] } as const;
 const EASE  = [0.22, 1, 0.36, 1] as const;
 
 /* ─── Navbar ─────────────────────────────────────────────────────────────── */
@@ -96,9 +98,9 @@ export function Navbar() {
       {/* Width wrapper: animates from full → 768 px on scroll */}
       <motion.div
         className="w-full pointer-events-auto"
-        initial={{ maxWidth: 100000, paddingLeft: 0, paddingRight: 0, paddingTop: 0 }}
+        initial={{ maxWidth: 1920, paddingLeft: 0, paddingRight: 0, paddingTop: 0 }}
         animate={{
-          maxWidth: scrolled ? 784 : 100000,
+          maxWidth: scrolled ? 784 : 1920,
           paddingLeft:  scrolled ? 16 : 0,
           paddingRight: scrolled ? 16 : 0,
           paddingTop:   scrolled ? 14 : 0,
@@ -109,7 +111,7 @@ export function Navbar() {
         <motion.header
           /* colours transition via CSS; geometry via framer */
           className={cn(
-            "w-full flex items-center justify-between border",
+            "w-full flex items-center border",
             "transition-colors duration-500",
             scrolled
               ? "bg-background/82 border-border/25 shadow-[0_2px_24px_0_rgb(0_0_0_/_.06)] backdrop-blur-xl"
@@ -129,6 +131,7 @@ export function Navbar() {
           }}
           transition={scrolled ? MORPH : MORPH_OUT}
         >
+          <div className="mx-auto max-w-6xl w-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <motion.span
@@ -220,6 +223,7 @@ export function Navbar() {
               </motion.span>
             </AnimatePresence>
           </button>
+          </div>
         </motion.header>
 
         {/* ── Mobile menu ──────────────────────────────────────────────── */}
