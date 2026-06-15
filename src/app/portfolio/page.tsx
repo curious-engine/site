@@ -7,7 +7,18 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Tools — Curious Engine",
-  description: "The tools we build for builders.",
+  description: "The tools we build for builders. Everything started as something we needed ourselves.",
+  alternates: { canonical: "https://curiousengine.org/portfolio" },
+  openGraph: {
+    url: "https://curiousengine.org/portfolio",
+    title: "Tools — Curious Engine",
+    description: "Tools for builders, built by builders. Everything started as something we needed ourselves.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tools — Curious Engine",
+    description: "Tools for builders, built by builders.",
+  },
 };
 
 export default function PortfolioPage() {

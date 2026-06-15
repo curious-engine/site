@@ -9,7 +9,18 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Community — Curious Engine",
-  description: "A community for builders, engineers, and founders. No gatekeepers. No permission needed.",
+  description: "A community for builders, engineers, and founders in Bangalore. No gatekeepers, no permission needed. Start it, build it, ship it.",
+  alternates: { canonical: "https://curiousengine.org/community" },
+  openGraph: {
+    url: "https://curiousengine.org/community",
+    title: "Community — Curious Engine",
+    description: "Builders who move without asking. A free, open community for engineers, founders, and makers in Bangalore and beyond.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Community — Curious Engine",
+    description: "Builders who move without asking. Free, open, no gatekeepers.",
+  },
 };
 
 export default function CommunityPage() {

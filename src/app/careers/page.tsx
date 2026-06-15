@@ -7,7 +7,18 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Volunteer — Curious Engine",
-  description: "Help run Curious Engine. Open volunteer and part-time roles for people who care.",
+  description: "Help run Curious Engine. Open volunteer and part-time roles for people who care about the builder community. Based in Bangalore, remote ok.",
+  alternates: { canonical: "https://curiousengine.org/careers" },
+  openGraph: {
+    url: "https://curiousengine.org/careers",
+    title: "Volunteer — Curious Engine",
+    description: "Help run Curious Engine. Open volunteer and part-time roles. No hierarchy — you own what you work on. Bangalore-based, remote ok.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Volunteer — Curious Engine",
+    description: "Help run Curious Engine. Open roles, no hierarchy, you own what you work on.",
+  },
 };
 
 export default function CareersPage() {

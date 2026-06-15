@@ -6,7 +6,18 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Manifesto — Curious Engine",
-  description: "Why we exist, what we believe, and how we think the world should work for builders.",
+  description: "Why Curious Engine exists, what we believe, and how we think the world should work for builders. No gatekeepers. Funding follows the work.",
+  alternates: { canonical: "https://curiousengine.org/manifesto" },
+  openGraph: {
+    url: "https://curiousengine.org/manifesto",
+    title: "Manifesto — Curious Engine",
+    description: "Why we exist, what we believe, and how we think the world should work for builders. No gatekeepers. Funding follows the work.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manifesto — Curious Engine",
+    description: "Why we exist and what we believe. No gatekeepers. Funding follows the work.",
+  },
 };
 
 const sections: { index: string; heading: React.ReactNode; body: string[] }[] = [

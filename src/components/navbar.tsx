@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   NavigationMenu,
@@ -134,12 +135,14 @@ export function Navbar() {
           <div className="mx-auto max-w-6xl w-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <motion.span
-              className="rounded-md bg-foreground"
+            <motion.div
+              className="rounded-md overflow-hidden shrink-0"
               animate={{ width: scrolled ? 18 : 22, height: scrolled ? 18 : 22 }}
               transition={scrolled ? MORPH : MORPH_OUT}
-              style={{ display: "inline-block" }}
-            />
+              style={{ position: "relative" }}
+            >
+              <Image src="/logo.png" alt="Curious Engine" fill sizes="22px" style={{ objectFit: "contain" }} />
+            </motion.div>
             <span className="font-semibold tracking-tight text-sm">curious engine</span>
           </Link>
 

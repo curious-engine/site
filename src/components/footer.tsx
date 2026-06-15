@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { libreCaslonDisplay } from "@/lib/fonts";
 
@@ -31,7 +32,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2">
-              <span className="size-5 rounded-md bg-foreground" />
+              <Image src="/logo.png" alt="Curious Engine" width={20} height={20} className="rounded-md" />
               <span className="font-semibold text-sm tracking-tight">curious engine</span>
             </Link>
             <p className="text-xs text-muted-foreground leading-relaxed">

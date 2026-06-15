@@ -9,7 +9,18 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About — Curious Engine",
-  description: "A non-profit for builders, engineers, and founders. We close the gap between an idea and the market.",
+  description: "A non-profit for builders, engineers, and founders. We close the gap between an idea and the market. Based in Bangalore, open to everyone.",
+  alternates: { canonical: "https://curiousengine.org/about" },
+  openGraph: {
+    url: "https://curiousengine.org/about",
+    title: "About — Curious Engine",
+    description: "A non-profit for builders, engineers, and founders in Bangalore. No gatekeepers. No equity taken. We close the gap between an idea and the market.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About — Curious Engine",
+    description: "A non-profit for builders in Bangalore. No gatekeepers, no equity, no permission needed.",
+  },
 };
 
 export default function AboutPage() {
