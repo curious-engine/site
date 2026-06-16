@@ -42,7 +42,7 @@ export default function CommunityPage() {
             </p>
             <div className="flex gap-3 pt-2">
               <Button size="lg" className="rounded-full gap-2 px-7" asChild>
-                <Link href="mailto:hello@curiousengine.org">join the community →</Link>
+                <Link href="https://discord.gg/H5cNRhV8Mc" target="_blank" rel="noopener noreferrer">join the community →</Link>
               </Button>
             </div>
           </div>

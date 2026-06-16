@@ -202,7 +202,7 @@ export function Navbar() {
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
             >
               <Button size="sm" className="text-sm rounded-full px-4" asChild>
-                <Link href="/community">get involved →</Link>
+                <Link href="https://discord.gg/H5cNRhV8Mc" target="_blank" rel="noopener noreferrer">get involved →</Link>
               </Button>
             </motion.div>
           </div>
@@ -242,7 +242,7 @@ export function Navbar() {
               {[
                 { href: "/programs",  label: "funding"    },
                 { href: "/events",   label: "events"     },
-                { href: "/community",label: "community"  },
+                { href: "/community", label: "community"  },
                 { href: "/about",    label: "about"      },
                 { href: "/manifesto",label: "manifesto"  },
                 { href: "/careers",  label: "volunteer"  },
@@ -268,7 +268,7 @@ export function Navbar() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.24, duration: 0.3 }}
               >
-                  <Link href="/community" onClick={() => setMobileOpen(false)} className="w-full">
+                  <Link href="https://discord.gg/H5cNRhV8Mc" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="w-full">
                     <Button size="sm" className="w-full justify-center rounded-full" asChild>
                       <span>get involved →</span>
                     </Button>

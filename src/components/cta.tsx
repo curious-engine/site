@@ -32,7 +32,7 @@ export function CTA() {
               className="rounded-md gap-2 px-6 bg-background text-foreground hover:bg-background/90"
               asChild
             >
-              <Link href="/community">
+              <Link href="https://discord.gg/H5cNRhV8Mc" target="_blank" rel="noopener noreferrer">
                 <ArrowRight size={16} weight="bold" />
                 join the community
               </Link>
