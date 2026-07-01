@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Terminal } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRight, Brain, Terminal } from "@phosphor-icons/react/dist/ssr";
 
 const companies = [
   {
@@ -16,6 +16,22 @@ const companies = [
       "Watch, REPL, TUI, and one-shot modes",
       "Shadow-git undo — your real .git is never touched",
       "Single binary, no Python, no Node, no runtime",
+    ],
+  },
+  {
+    name: "plotter",
+    tagline: "a canvas for thinking with AI",
+    category: "AI Workspace",
+    description:
+      "Your thinking gets scattered across ChatGPT tabs, Notion pages, Figma comments, and handwritten notes. Plotter brings it all to one infinite canvas. Dump your raw, messy thoughts and an AI agent turns them into a structured visual board — diagrams, groupings, and layout generated for you, so you go from a mess in your head to something you can actually reason about.",
+    href: "https://plotter.so",
+    status: "beta",
+    icon: Brain,
+    highlights: [
+      "Brain dump → structured visual board in seconds",
+      "AI works directly on the canvas, not in a sidebar",
+      "Infinite canvas — notes, diagrams, and references in one space",
+      "Replaces scattered tabs, AI chats, and sticky notes",
     ],
   },
 ];
@@ -81,7 +97,7 @@ export function Portfolio() {
                 </div>
 
                 <div className="flex items-center gap-1 text-xs text-muted-foreground group-hover:text-foreground transition-colors shrink-0 self-end md:self-start mt-1">
-                  visit mimicode.xyz <ArrowUpRight size={12} />
+                  visit {c.href.replace("https://", "")} <ArrowUpRight size={12} />
                 </div>
               </Link>
             );
