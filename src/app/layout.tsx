@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
 import { ibmPlexSans, ibmPlexMono, libreCaslonDisplay } from "@/lib/fonts";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -68,7 +69,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={cn("h-full antialiased", ibmPlexSans.variable, ibmPlexMono.variable, libreCaslonDisplay.variable)}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        {children}
+        <ClerkProvider>{children}</ClerkProvider>
       </body>
     </html>
   );
