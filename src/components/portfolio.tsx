@@ -1,40 +1,12 @@
+import type { ComponentType } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Brain, Terminal } from "@phosphor-icons/react/dist/ssr";
+import { companies, type CompanyIcon } from "@/content/companies";
 
-const companies = [
-  {
-    name: "mimicode",
-    tagline: "notebook-first AI coding tool",
-    category: "Developer Tools",
-    description:
-      "Open code.mimi in your editor, write a question, save. The answer lands below a divider in the same file. No chat window. No tab switching. One binary, zero dependencies — and a rubber duck that can search your repo, run commands, and make mechanical edits when you ask.",
-    href: "https://mimicode.xyz",
-    status: "beta",
-    icon: Terminal,
-    highlights: [
-      "Your editor is the UI — zero context switches",
-      "Watch, REPL, TUI, and one-shot modes",
-      "Shadow-git undo — your real .git is never touched",
-      "Single binary, no Python, no Node, no runtime",
-    ],
-  },
-  {
-    name: "plotter",
-    tagline: "a canvas for thinking with AI",
-    category: "AI Workspace",
-    description:
-      "Your thinking gets scattered across ChatGPT tabs, Notion pages, Figma comments, and handwritten notes. Plotter brings it all to one infinite canvas. Dump your raw, messy thoughts and an AI agent turns them into a structured visual board — diagrams, groupings, and layout generated for you, so you go from a mess in your head to something you can actually reason about.",
-    href: "https://plotter.so",
-    status: "beta",
-    icon: Brain,
-    highlights: [
-      "Brain dump → structured visual board in seconds",
-      "AI works directly on the canvas, not in a sidebar",
-      "Infinite canvas — notes, diagrams, and references in one space",
-      "Replaces scattered tabs, AI chats, and sticky notes",
-    ],
-  },
-];
+const iconMap = {
+  terminal: Terminal,
+  brain: Brain,
+} satisfies Record<CompanyIcon, ComponentType<{ size?: number; className?: string }>>;
 
 export function Portfolio() {
   return (
@@ -48,13 +20,13 @@ export function Portfolio() {
             </h2>
           </div>
           <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">
-            a growing collection of products and companies born out of curious engine — each one solving a real problem we or our community ran into.
+            a growing collection of products and companies born out of curious engine &mdash; each one solving a real problem we or our community ran into.
           </p>
         </div>
 
         <div className="flex flex-col gap-4">
           {companies.map((c) => {
-            const Icon = c.icon;
+            const Icon = iconMap[c.icon];
             return (
               <Link
                 key={c.name}
@@ -69,12 +41,10 @@ export function Portfolio() {
                   </span>
                 )}
 
-                {/* Icon */}
                 <div className="shrink-0 size-12 rounded-xl border border-border bg-muted flex items-center justify-center">
                   <Icon size={22} className="text-foreground" />
                 </div>
 
-                {/* Content */}
                 <div className="flex flex-col gap-4 flex-1">
                   <div>
                     <div className="flex items-center gap-3 mb-1">

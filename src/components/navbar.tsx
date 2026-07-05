@@ -15,12 +15,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { companies, type CompanyIcon } from "@/content/companies";
 import {
-  HandWaving,
-  Wrench,
-  Buildings,
-  BookOpen,
-  Handshake,
   Terminal,
   Brain,
   Info,
@@ -33,21 +29,19 @@ import {
   UsersThree,
 } from "@phosphor-icons/react";
 
-/* ─── data ──────────────────────────────────────────────────────────────── */
-const products = [
-  {
-    icon: Terminal,
-    name: "mimicode",
-    desc: "Notebook-first AI coding tool. Write a question in your editor, save, get the answer in-file.",
-    href: "https://mimicode.xyz",
-  },
-  {
-    icon: Brain,
-    name: "plotter",
-    desc: "An infinite canvas for thinking with AI. Brain dump your messy thoughts, get a structured visual board.",
-    href: "https://plotter.so",
-  },
-];
+const companyIconMap = {
+  terminal: Terminal,
+  brain: Brain,
+} satisfies Record<CompanyIcon, React.ComponentType<{ size?: number; className?: string }>>;
+
+const products = companies
+  .filter((company) => company.featured)
+  .map((company) => ({
+    icon: companyIconMap[company.icon],
+    name: company.name,
+    desc: company.navDescription ?? company.tagline,
+    href: company.href,
+  }));
 
 const programs = [
   {
@@ -76,14 +70,14 @@ const resources = [
   { icon: EnvelopeSimple, name: "Contact", desc: "Say hi, pitch something, or just ask a question.",             href: "mailto:hello@curiousengine.org" },
 ];
 
-/* ─── transitions for pill morph ───────────────────────────────────────── */
+/* Transitions for pill morph */
 // [0.4, 0, 0.2, 1] — symmetric ease-in-out: motion is visible and slow
 // throughout the full duration, not piled at start or end.
 const MORPH     = { type: "tween", duration: 1.4, ease: [0, 0, 0.58, 1] } as const;
 const MORPH_OUT = { type: "tween", duration: 1.4, ease: [0, 0, 0.58, 1] } as const;
 const EASE  = [0.22, 1, 0.36, 1] as const;
 
-/* ─── Navbar ─────────────────────────────────────────────────────────────── */
+/* Navbar */
 export function Navbar() {
   const [scrolled,    setScrolled]    = React.useState(false);
   const [mobileOpen,  setMobileOpen]  = React.useState(false);
@@ -115,7 +109,7 @@ export function Navbar() {
         }}
         transition={scrolled ? MORPH : MORPH_OUT}
       >
-        {/* ── Pill / bar ───────────────────────────────────────────────── */}
+        {/* Pill / bar */}
         <motion.header
           /* colours transition via CSS; geometry via framer */
           className={cn(
@@ -235,8 +229,7 @@ export function Navbar() {
           </button>
           </div>
         </motion.header>
-
-        {/* ── Mobile menu ──────────────────────────────────────────────── */}
+        {/* Mobile menu */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
@@ -290,7 +283,7 @@ export function Navbar() {
   );
 }
 
-/* ─── helpers ────────────────────────────────────────────────────────────── */
+/* Helpers */
 
 function NavItem({ label, children }: { label: string; children: React.ReactNode }) {
   return (
