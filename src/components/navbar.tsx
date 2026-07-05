@@ -22,6 +22,7 @@ import {
   BookOpen,
   Handshake,
   Terminal,
+  Brain,
   Info,
   Briefcase,
   EnvelopeSimple,
@@ -39,6 +40,12 @@ const products = [
     name: "mimicode",
     desc: "Notebook-first AI coding tool. Write a question in your editor, save, get the answer in-file.",
     href: "https://mimicode.xyz",
+  },
+  {
+    icon: Brain,
+    name: "plotter",
+    desc: "An infinite canvas for thinking with AI. Brain dump your messy thoughts, get a structured visual board.",
+    href: "https://plotter.so",
   },
 ];
 

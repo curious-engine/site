@@ -42,13 +42,13 @@ export function Portfolio() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">what we build</p>
+            <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">our portfolio</p>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
-              tools for the community
+              what we&apos;ve built
             </h2>
           </div>
           <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">
-            we build tools we use ourselves and share freely with the builders we support. mimicode started as a scratch-your-own-itch and grew into something others wanted to use too.
+            a growing collection of products and companies born out of curious engine — each one solving a real problem we or our community ran into.
           </p>
         </div>
 

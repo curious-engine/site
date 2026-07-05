@@ -6,18 +6,18 @@ import { Pen } from "@/components/pen";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tools — Curious Engine",
-  description: "The tools we build for builders. Everything started as something we needed ourselves.",
+  title: "Portfolio — Curious Engine",
+  description: "A look at the companies and products we've built at Curious Engine.",
   alternates: { canonical: "https://curiousengine.org/portfolio" },
   openGraph: {
     url: "https://curiousengine.org/portfolio",
-    title: "Tools — Curious Engine",
-    description: "Tools for builders, built by builders. Everything started as something we needed ourselves.",
+    title: "Portfolio — Curious Engine",
+    description: "A look at the companies and products we've built at Curious Engine.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tools — Curious Engine",
-    description: "Tools for builders, built by builders.",
+    title: "Portfolio — Curious Engine",
+    description: "A look at the companies and products we've built at Curious Engine.",
   },
 };
 
@@ -29,15 +29,12 @@ export default function PortfolioPage() {
         {/* Page header */}
         <div className="border-b border-border px-6 py-20 md:py-28">
           <div className="mx-auto max-w-6xl flex flex-col gap-5">
-            <p className="text-xs text-muted-foreground uppercase tracking-widest">what we build</p>
+            <p className="text-xs text-muted-foreground uppercase tracking-widest">our portfolio</p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight max-w-2xl">
-              tools for <Pen>builders,</Pen>
-              <br />
-              <span className="text-muted-foreground font-normal">built by builders.</span>
+              companies we&apos;ve <Pen>built.</Pen>
             </h1>
             <p className="max-w-lg text-base text-muted-foreground leading-relaxed">
-              the things we build start as something we needed ourselves. if it&apos;s useful to us,
-              it&apos;s probably useful to others. we build them, share them, and keep making them better.
+              a growing collection of products and companies that came out of curious engine. each one started as a real problem worth solving — and grew from there.
             </p>
           </div>
         </div>
