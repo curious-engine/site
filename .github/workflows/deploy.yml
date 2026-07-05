@@ -34,13 +34,13 @@ jobs:
         uses: appleboy/ssh-action@v1.2.2
         env:
           APP_DIR: ${{ secrets.HETZNER_APP_DIR }}
-          APP_NAME: ${{ vars.HETZNER_APP_NAME || 'curiousengine' }}
+          SERVICE_NAME: ${{ vars.HETZNER_SERVICE_NAME || 'curiousengine' }}
         with:
           host: ${{ secrets.HETZNER_HOST }}
           username: ${{ secrets.HETZNER_USER }}
           key: ${{ secrets.HETZNER_SSH_KEY }}
           port: ${{ secrets.HETZNER_SSH_PORT || 22 }}
-          envs: APP_DIR,APP_NAME
+          envs: APP_DIR,SERVICE_NAME
           script_stop: true
           script: |
             set -euo pipefail
@@ -49,11 +49,4 @@ jobs:
             git pull --ff-only origin master
             npm ci
             npm run build
-
-            if pm2 describe "$APP_NAME" >/dev/null 2>&1; then
-              pm2 restart "$APP_NAME" --update-env
-            else
-              pm2 start npm --name "$APP_NAME" -- start
-            fi
-
-            pm2 save
+            systemctl restart "$SERVICE_NAME"
