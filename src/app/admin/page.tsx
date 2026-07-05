@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { companies } from "@/content/companies";
 import { addCompanyAction } from "./actions";
@@ -20,12 +21,16 @@ export default async function AdminPage() {
     return <AdminGate />;
   }
 
+  if (!admin.isAdmin) {
+    notFound();
+  }
+
   return (
     <main className="min-h-svh bg-background px-6 py-8 text-foreground">
       <div className="mx-auto flex max-w-6xl flex-col gap-8">
-        <AdminHeader title={admin.isAdmin ? "admin dashboard" : "sample dashboard"} />
-        <SampleDashboard isAdmin={admin.isAdmin} email={admin.email} />
-        {admin.isAdmin && <CompanyCms />}
+        <AdminHeader title="admin dashboard" />
+        <SampleDashboard email={admin.email} />
+        <CompanyCms />
       </div>
     </main>
   );
@@ -79,7 +84,7 @@ function AdminHeader({ title }: { title: string }) {
   );
 }
 
-function SampleDashboard({ isAdmin, email }: { isAdmin: boolean; email: string | null }) {
+function SampleDashboard({ email }: { email: string | null }) {
   return (
     <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
       <div className="rounded-xl border border-border bg-card p-6">
@@ -87,7 +92,7 @@ function SampleDashboard({ isAdmin, email }: { isAdmin: boolean; email: string |
           <div>
             <h2 className="text-xl font-semibold">Overview</h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              {isAdmin ? "You have full CMS access." : "Your account is signed in. CMS writes are limited to allowlisted admins."}
+              You have full CMS access.
             </p>
           </div>
           {email && <span className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">{email}</span>}

@@ -4,7 +4,6 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -198,8 +197,6 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-2 shrink-0">
-
-
             <motion.div
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
@@ -271,7 +268,6 @@ export function Navbar() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.24, duration: 0.3 }}
               >
-
                   <Link href="https://discord.gg/H5cNRhV8Mc" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="w-full">
                     <Button size="sm" className="w-full justify-center rounded-full" asChild>
                       <span>get involved →</span>
