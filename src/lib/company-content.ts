@@ -28,7 +28,38 @@ export function renderCompaniesModule(nextCompanies: Company[]) {
   return `export type CompanyIcon = "terminal" | "brain";\nexport type CompanyStatus = "beta" | "live" | "private";\n\nexport type Company = {\n  name: string;\n  tagline: string;\n  category: string;\n  description: string;\n  href: string;\n  status?: CompanyStatus;\n  icon: CompanyIcon;\n  featured?: boolean;\n  navDescription?: string;\n  highlights: string[];\n};\n\nexport const companies: Company[] = [\n${entries},\n];\n`;
 }
 
-export async function appendCompany(company: Company) {
-  const nextCompanies = [...companies, company];
+async function writeCompanies(nextCompanies: Company[]) {
   await fs.writeFile(companiesPath, renderCompaniesModule(nextCompanies), "utf8");
+}
+
+export async function appendCompany(company: Company) {
+  await writeCompanies([...companies, company]);
+}
+
+export async function updateCompany(originalName: string, company: Company) {
+  const normalizedOriginalName = originalName.trim().toLowerCase();
+  let found = false;
+
+  const nextCompanies = companies.map((currentCompany) => {
+    if (currentCompany.name.toLowerCase() !== normalizedOriginalName) return currentCompany;
+    found = true;
+    return company;
+  });
+
+  if (!found) {
+    throw new Error("Company not found");
+  }
+
+  await writeCompanies(nextCompanies);
+}
+
+export async function deleteCompany(name: string) {
+  const normalizedName = name.trim().toLowerCase();
+  const nextCompanies = companies.filter((company) => company.name.toLowerCase() !== normalizedName);
+
+  if (nextCompanies.length === companies.length) {
+    throw new Error("Company not found");
+  }
+
+  await writeCompanies(nextCompanies);
 }

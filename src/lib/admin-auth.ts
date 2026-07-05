@@ -1,4 +1,5 @@
 import { auth, currentUser } from "@clerk/nextjs/server";
+import { adminEmails as configuredAdminEmails } from "@/content/admins";
 
 function splitEnvList(value: string | undefined) {
   return new Set(
@@ -24,7 +25,7 @@ function getClaimString(claims: unknown, keys: string[]) {
 export async function getAdminAuth() {
   const session = await auth();
   const adminUserIds = splitEnvList(process.env.CLERK_ADMIN_USER_IDS);
-  const adminEmails = splitEnvList(process.env.CLERK_ADMIN_EMAILS);
+  const adminEmails = new Set([...splitEnvList(process.env.CLERK_ADMIN_EMAILS), ...configuredAdminEmails.map((adminEmail) => adminEmail.toLowerCase())]);
   const userId = session.userId?.toLowerCase() ?? null;
 
   const claimEmail = getClaimString(session.sessionClaims, ["email", "primary_email_address", "email_address"]);

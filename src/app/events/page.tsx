@@ -4,38 +4,13 @@ import { Footer } from "@/components/footer";
 import { Pen } from "@/components/pen";
 import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
+import { events } from "@/content/events";
 
 export const metadata: Metadata = {
   title: "Events — Curious Engine",
   description: "In-person events for builders in Bangalore. Workshops, demo nights, and open hack sessions.",
 };
 
-const upcomingEvents = [
-  {
-    title: "Builder Meetup #01",
-    type: "Meetup",
-    date: "Coming soon",
-    location: "Bangalore, India",
-    description:
-      "The first official curious engine meetup. Come meet other builders, show what you're working on, and find people thinking about the same problems. No agenda. No keynotes. Just builders in a room.",
-  },
-  {
-    title: "Open Hack Session",
-    type: "Hack Session",
-    date: "Coming soon",
-    location: "Bangalore, India",
-    description:
-      "Bring a problem you're stuck on or a project you want to push forward. Work alongside other builders for a few hours. Show up solo. Leave with collaborators.",
-  },
-  {
-    title: "Demo Night",
-    type: "Demo",
-    date: "Coming soon",
-    location: "Bangalore, India",
-    description:
-      "Five-minute demos of whatever you've been building. No investor pitches. No polished decks. Just show the thing and tell us what you learned. Feedback welcome, judgment-free.",
-  },
-];
 
 export default function EventsPage() {
   return (
@@ -66,7 +41,7 @@ export default function EventsPage() {
             </div>
 
             <div className="flex flex-col gap-4">
-              {upcomingEvents.map((e) => (
+              {events.map((e) => (
                 <div
                   key={e.title}
                   className="flex flex-col md:flex-row md:items-start gap-6 rounded-xl border border-border bg-card p-8"
